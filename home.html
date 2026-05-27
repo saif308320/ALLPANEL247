@@ -1,0 +1,827 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ALL - Home</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',Arial,sans-serif;}
+body{background:#c8c8c8;overflow-x:hidden;}
+a{text-decoration:none;color:inherit;}
+
+:root{
+  --blue:#0088cc;
+  --blue-dark:#006fa8;
+  --blue-light:#1a9ddd;
+  --row-h:44px;
+}
+
+/* ===================== POPUP ===================== */
+#overlay{
+  position:fixed;inset:0;
+  background:rgba(0,0,0,0.65);
+  z-index:9999;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+.popup-box{
+  width:800px;
+  max-width:94vw;
+  background:#000;
+  border-radius:3px;
+  overflow:hidden;
+  position:relative;
+  box-shadow:0 8px 40px rgba(0,0,0,0.7);
+}
+.popup-alertbar{
+  background:var(--blue);
+  color:#fff;
+  padding:11px 46px 11px 16px;
+  font-size:20px;
+  font-weight:700;
+  line-height:1.45;
+  position:relative;
+}
+.popup-closebtn{
+  position:absolute;right:12px;top:50%;
+  transform:translateY(-50%);
+  background:none;border:none;color:#fff;
+  font-size:26px;cursor:pointer;line-height:1;padding:0;
+}
+.popup-imgwrap img{width:100%;display:block;}
+
+/* ---- MOBILE POPUP: full screen ---- */
+@media(max-width:700px){
+  .popup-box{
+    width:100vw;
+    max-width:100vw;
+    height:100dvh;
+    border-radius:0;
+    display:flex;
+    flex-direction:column;
+  }
+  .popup-alertbar{
+    font-size:15px;
+    padding:10px 44px 10px 12px;
+    flex-shrink:0;
+  }
+  .popup-imgwrap{
+    flex:1;
+    overflow:hidden;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:#000;
+  }
+  .popup-imgwrap img{
+    width:100%;
+    height:100%;
+    object-fit:initial;
+  }
+}
+
+/* ===================== HEADER ROW 1 ===================== */
+.hdr1{
+  background:var(--blue);display:flex;align-items:center;
+  padding:0 10px;height:54px;gap:8px;position:relative;
+}
+.hdr-logo{
+  color:#fff;font-size:46px;font-weight:900;
+  font-family:Georgia,'Times New Roman',serif;
+  line-height:1;letter-spacing:1px;flex-shrink:0;
+}
+.mob-menu-btn{
+  display:none;align-items:center;justify-content:center;
+  width:32px;height:32px;border-radius:4px;
+  background:rgba(255,255,255,0.18);border:none;cursor:pointer;
+  color:#fff;font-size:17px;flex-shrink:0;
+}
+.hdr-right{margin-left:auto;display:flex;align-items:center;gap:8px;min-width:0;flex-wrap:nowrap;}
+.search-wrap{position:relative;display:flex;align-items:center;height:30px;flex-shrink:0;}
+.search-input{
+  width:0;max-width:0;opacity:0;
+  background:rgba(255,255,255,0.15);border:1px solid rgba(255,255,255,0.4);
+  border-radius:20px;color:#fff;font-size:12px;
+  padding:5px 12px 5px 34px;outline:none;
+  transition:max-width 0.35s ease,opacity 0.35s ease;height:30px;
+}
+.search-input::placeholder{color:rgba(255,255,255,0.7);}
+.search-input.open{max-width:160px;width:160px;opacity:1;}
+.search-btn{
+  position:absolute;left:0;width:30px;height:30px;
+  border-radius:50%;border:2px solid rgba(255,255,255,0.85);
+  background:none;display:flex;align-items:center;justify-content:center;
+  cursor:pointer;color:#fff;z-index:2;flex-shrink:0;
+}
+.search-btn:hover{background:rgba(255,255,255,0.2);}
+.search-btn i{font-size:12px;pointer-events:none;}
+.hdr-rules{line-height:1.35;flex-shrink:0;}
+.hdr-rules .rl1{color:#fff;font-size:12px;font-weight:700;display:block;cursor:pointer;white-space:nowrap;}
+.hdr-rules .rl2{color:rgba(255,255,255,0.9);font-size:11px;display:flex;align-items:center;gap:3px;cursor:pointer;white-space:nowrap;}
+.hdr-rules .rl2 i{color:#3ddc84;font-size:14px;}
+.hdr-bal{line-height:1.35;flex-shrink:0;}
+.hdr-bal .b1{color:#fff;font-size:12px;font-weight:700;white-space:nowrap;}
+.hdr-bal .b2{color:rgba(255,255,255,0.9);font-size:11px;white-space:nowrap;}
+.hdr-demo{color:#fff;font-size:12px;font-weight:700;display:flex;align-items:center;gap:4px;cursor:pointer;flex-shrink:0;white-space:nowrap;}
+.hdr-demo i{font-size:10px;}
+
+/* Back to login link */
+.hdr-logout{
+  color:rgba(255,255,255,0.85);font-size:11px;
+  display:flex;align-items:center;gap:4px;
+  cursor:pointer;flex-shrink:0;white-space:nowrap;
+  text-decoration:none;
+}
+.hdr-logout:hover{color:#fff;}
+
+/* ===================== HEADER ROW 2 - MARQUEE ===================== */
+.hdr2{background:#1c2b3a;height:28px;overflow:hidden;display:flex;align-items:center;}
+.hdr2-track{display:flex;white-space:nowrap;animation:hscroll 28s linear infinite;}
+.hdr2-track span{color:#fff;font-size:12px;font-style:italic;padding:0 32px;display:inline-block;line-height:28px;}
+@keyframes hscroll{0%{transform:translateX(0);}100%{transform:translateX(-50%);}}
+
+/* ===================== HEADER ROW 3 NAV ===================== */
+.hdr3{background:#111;display:flex;align-items:stretch;overflow-x:auto;scrollbar-width:none;min-height:40px;}
+.hdr3::-webkit-scrollbar{display:none;}
+.ntab{
+  color:#b0b0b0;font-size:11.5px;font-weight:700;
+  letter-spacing:0.4px;text-transform:uppercase;
+  padding:0 13px;display:flex;align-items:center;gap:5px;
+  white-space:nowrap;cursor:pointer;position:relative;
+  border-right:1px solid #1e1e1e;flex-shrink:0;
+}
+.ntab:hover{color:#fff;background:rgba(255,255,255,0.04);}
+.ntab.on{color:#fff;}
+.ntab.on::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:var(--blue);}
+.ntab i{font-size:12px;}
+.ntab.crash-tab{color:#ff2222;font-weight:800;}
+.ntab.crash-tab i{color:#ff2222;}
+
+/* ===================== MAIN LAYOUT ===================== */
+.main-wrap{display:flex;align-items:flex-start;}
+
+/* ===================== SIDEBAR ===================== */
+.sidebar{
+  width:240px;flex-shrink:0;
+  background:#d0d0d0;border-right:1px solid #bbb;
+  overflow-y:auto;align-self:flex-start;
+}
+.sb-grp{border-bottom:1px solid #bbb;}
+.sb-hd{
+  background:var(--blue);color:#fff;font-size:12px;font-weight:700;
+  padding:8px 10px;display:flex;justify-content:space-between;align-items:center;
+  cursor:pointer;user-select:none;
+}
+.sb-hd i{font-size:11px;transition:transform 0.25s;}
+.sb-hd.collapsed i{transform:rotate(180deg);}
+.sb-body{overflow:hidden;transition:max-height 0.3s ease;}
+.sb-body.collapsed{max-height:0 !important;}
+.sb-link{
+  display:block;font-size:12.5px;font-weight:500;color:#111;
+  padding:6px 12px;cursor:pointer;background:#d0d0d0;
+  border-bottom:1px solid #c0c0c0;
+}
+.sb-link:hover{background:#b8d8f0;color:var(--blue);}
+.sb-link.dim{color:#666;}
+.sb-row{
+  display:flex;align-items:center;gap:7px;
+  font-size:12.5px;font-weight:500;color:#111;
+  padding:6px 10px;cursor:pointer;background:#d0d0d0;
+  border-bottom:1px solid #c0c0c0;
+}
+.sb-row:hover{background:#b8d8f0;color:var(--blue);}
+.sb-row i{font-size:12px;color:#111;flex-shrink:0;}
+
+/* ===================== CONTENT ===================== */
+.content{flex:1;min-width:0;background:#ebebeb;}
+
+/* Live strip */
+.live-strip{background:#1a1a1a;display:flex;overflow-x:auto;padding:4px 6px;scrollbar-width:none;border-bottom:1px solid #2a2a2a;}
+.live-strip::-webkit-scrollbar{display:none;}
+.lpill{color:#aaa;font-size:11.5px;white-space:nowrap;display:flex;align-items:center;gap:5px;padding:4px 12px;border-right:1px solid #2e2e2e;cursor:pointer;flex-shrink:0;}
+.lpill:hover{color:#fff;}
+.gdot{width:7px;height:7px;background:#4caf50;border-radius:50%;display:inline-block;animation:blink 1.4s infinite;flex-shrink:0;}
+@keyframes blink{0%,100%{opacity:1;}50%{opacity:0.15;}}
+
+/* Sport sub-tabs */
+.sport-tabs{background:#fff;display:flex;overflow-x:auto;scrollbar-width:none;border-bottom:1.5px solid #ddd;padding:0 4px;}
+.sport-tabs::-webkit-scrollbar{display:none;}
+.stab{font-size:12.5px;font-weight:600;color:#555;padding:9px 13px;white-space:nowrap;cursor:pointer;border-bottom:3px solid transparent;flex-shrink:0;}
+.stab:hover{color:var(--blue);}
+.stab.on{color:var(--blue);border-bottom-color:var(--blue);}
+
+/* ===================== MATCH TABLE ===================== */
+.match-wrap{
+  background:#fff;margin:5px 5px 0;
+  border:1px solid #ddd;border-radius:2px;overflow:hidden;
+}
+.match-tbl-scroll{
+  overflow-x:auto;
+  -webkit-overflow-scrolling:touch;
+  scrollbar-width:thin;
+  scrollbar-color:#ccc #f4f4f4;
+}
+.match-tbl-scroll::-webkit-scrollbar{height:4px;}
+.match-tbl-scroll::-webkit-scrollbar-track{background:#f4f4f4;}
+.match-tbl-scroll::-webkit-scrollbar-thumb{background:#ccc;border-radius:2px;}
+.match-tbl{
+  width:100%;min-width:520px;
+  border-collapse:collapse;table-layout:fixed;
+}
+.match-tbl col.c-game{width:auto;min-width:160px;}
+.match-tbl col.c-ic {width:20px;}
+.match-tbl col.c-ic2{width:22px;}
+.match-tbl col.c-ic3{width:18px;}
+.match-tbl col.c-ic4{width:28px;}
+.match-tbl col.c-ic5{width:24px;}
+.match-tbl col.c-odds{width:58px;}
+.match-tbl col.c-xo  {width:48px;}
+.match-tbl thead th{
+  font-size:11.5px;font-weight:700;color:#555;
+  padding:7px 0;border-bottom:1.5px solid #ddd;
+  text-align:center;background:#f4f4f4;white-space:nowrap;
+}
+.th-game{text-align:left !important;padding-left:10px !important;}
+.match-tbl tbody tr{border-bottom:1px solid #eee;}
+.match-tbl tbody tr:last-child{border-bottom:none;}
+.match-tbl tbody tr:hover{background:#f5faff;}
+.match-tbl td{padding:0;vertical-align:middle;}
+.td-game{padding:6px 6px 6px 10px !important;text-align:left;}
+.gname{font-weight:700;color:#111;font-size:12px;display:block;}
+.gdate{color:#888;font-weight:400;font-size:10.5px;}
+.td-ic{text-align:center;padding:0 1px !important;}
+.gdot-s{width:8px;height:8px;background:#4caf50;border-radius:50%;display:inline-block;}
+.ic-tv{color:#555;font-size:12px;}
+.bdg-f{color:#1877f2;font-size:11px;font-weight:700;}
+.bdg-bm{background:#111;color:#fff;font-size:8.5px;font-weight:700;padding:1px 3px;border-radius:2px;}
+.bdg-e{background:#888;color:#fff;font-size:8.5px;font-weight:700;padding:1px 4px;border-radius:50%;}
+.bdg-grid{color:#777;font-size:11px;}
+.td-back{background:#72bbef;text-align:center;padding:0 !important;}
+.td-lay {background:#faa9ba;text-align:center;padding:0 !important;}
+.td-lock{background:#3d3d3d;text-align:center;padding:0 !important;}
+.td-dash{background:#fff;text-align:center;padding:0 !important;}
+.ov{display:block;font-size:12.5px;font-weight:700;color:#333;padding:8px 2px;line-height:1;text-align:center;}
+.td-lay .ov{color:#555;}
+.ov-lock{display:flex;align-items:center;justify-content:center;padding:8px 2px;}
+.ov-lock i{font-size:11px;color:#fff;}
+.dash-txt{display:block;font-size:12px;color:#aaa;padding:8px 2px;text-align:center;}
+
+/* ===================== GAME GRID ===================== */
+.games-wrap{margin:5px 5px 5px;}
+.games-grid{
+  display:grid;
+  /* Desktop: exactly 10 columns */
+  grid-template-columns:repeat(10,1fr);
+  gap:2px;background:#aaa;
+}
+.gc{aspect-ratio:1;overflow:hidden;cursor:pointer;position:relative;background:#111;}
+.gc img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.15s;}
+.gc:hover img{transform:scale(1.07);}
+.gc-lbl{
+  position:absolute;bottom:0;left:0;right:0;
+  background:linear-gradient(transparent,rgba(0,0,0,0.84));
+  color:#fff;font-size:7px;font-weight:700;
+  padding:8px 3px 3px;text-align:center;
+  text-transform:uppercase;letter-spacing:0.2px;line-height:1.2;
+}
+
+/* ===================== FOOTER ===================== */
+.ft-support{
+  background:var(--blue);color:#fff;
+  text-align:center;font-size:20px;font-weight:700;
+  padding:10px;margin-top:5px;
+}
+.ft-bottom{
+  background:#fff;padding:12px 16px;
+  display:flex;align-items:center;
+  justify-content:space-between;
+  flex-wrap:wrap;gap:10px;border-top:1px solid #eee;
+}
+.ft-secure{display:flex;align-items:center;gap:12px;flex-wrap:wrap;}
+.ft-shield img{width:90px;height:70px;object-fit:contain;}
+.ft-stxt .t1{font-size:16px;font-weight:700;color:#111;}
+.ft-stxt p{font-size:15px;color:#666;margin-top:2px;}
+.ft-logos{display:flex;align-items:center;gap:8px;flex-wrap:wrap;}
+.ftlc{
+  width:40px;height:40px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  overflow:hidden;cursor:pointer;
+}
+.ftlc img{width:100%;height:100%;object-fit:cover;border-radius:50%;}
+.ft-copy{
+  background:#f5f5f5;text-align:center;
+  padding:8px;font-size:18px;color:#000000;
+  border-top:1px solid #e4e4e4;
+}
+
+/* ===================== MOBILE <=700px ===================== */
+@media(max-width:700px){
+  .mob-menu-btn{display:flex !important;}
+  .hdr1{height:52px;padding:0 8px;gap:6px;}
+  .hdr-logo{font-size:34px;}
+  .hdr-right{gap:6px;}
+  .hdr-rules .rl2 .apk-txt{display:none;}
+  .hdr-bal .b2{display:none;}
+  .search-input.open{max-width:110px;width:110px;}
+  .hdr3{min-height:38px;}
+  .ntab{padding:0 9px;font-size:10px;}
+
+  /* Sidebar: fixed overlay */
+  .sidebar{
+    position:fixed;top:0;left:-220px;
+    width:220px;height:100dvh;
+    z-index:8888;background:#d0d0d0;
+    transition:left 0.3s ease;
+    overflow-y:auto;
+    box-shadow:3px 0 16px rgba(0,0,0,0.25);
+  }
+  .sidebar.mob-open{left:0;}
+  .mob-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.5);z-index:8887;}
+  .mob-overlay.show{display:block;}
+
+  /* Match table: 3 rows visible + vertical scroll */
+  .match-tbl-scroll{
+    max-height:164px;
+    overflow-y:auto;
+    overflow-x:auto;
+    scrollbar-width:thin;
+    scrollbar-color:#aaa #f0f0f0;
+  }
+  .match-tbl thead th{
+    position:sticky;top:0;z-index:2;
+    background:#f4f4f4;
+  }
+
+  /* ---- MOBILE GAME GRID: 4 columns ---- */
+  .games-grid{
+    grid-template-columns:repeat(4,1fr);
+  }
+  .gc-lbl{font-size:6.5px;}
+
+  /* Footer mobile: center everything */
+  .ft-bottom{
+    flex-direction:column;
+    align-items:center;
+    text-align:center;
+    padding:10px 12px;gap:8px;
+  }
+  .ft-secure{
+    flex-direction:column;
+    align-items:center;
+    text-align:center;
+  }
+  .ft-shield img{width:100px;height:50px;}
+  .ft-logos{
+    justify-content:center;
+    gap:6px;
+  }
+  .ftlc{width:34px;height:34px;}
+  .ft-support{font-size:16px;padding:8px;}
+  .ft-copy{font-size:12px;padding:6px;}
+}
+
+@media(min-width:701px){
+  .mob-menu-btn{display:none !important;}
+  .mob-overlay{display:none !important;}
+}
+
+/* Tablet */
+@media(max-width:900px) and (min-width:701px){
+  .sidebar{width:190px;}
+  .match-tbl col.c-odds{width:52px;}
+  .match-tbl col.c-xo{width:42px;}
+  /* Tablet: keep 10 columns but allow scrolling */
+  .games-grid{grid-template-columns:repeat(10,1fr);}
+  .hdr-logo{font-size:38px;}
+}
+</style>
+</head>
+<body>
+
+<div class="mob-overlay" id="mobOverlay" onclick="closeSidebar()"></div>
+
+<!-- ===================== POPUP ===================== -->
+<div id="overlay">
+  <div class="popup-box">
+    <div class="popup-alertbar">
+      Enable 2 Step Security Authentication To Secure Your Account.
+      <button class="popup-closebtn" onclick="document.getElementById('overlay').style.display='none'">&#x2715;</button>
+    </div>
+    <div class="popup-imgwrap">
+      <!-- Replace with your actual popup image path -->
+      <img src="./image/popup all panel.png" alt="Jackpot Popup" onerror="this.parentElement.style.background='#1a3a5c';this.style.display='none'">
+    </div>
+  </div>
+</div>
+
+<!-- ===================== HEADER ===================== -->
+<header>
+  <div class="hdr1">
+    <button class="mob-menu-btn" onclick="toggleSidebar()">
+      <i class="fa-solid fa-bars"></i>
+    </button>
+    <div class="hdr-logo">ALL</div>
+    <div class="hdr-right">
+      <div class="search-wrap" id="searchWrap">
+        <input type="text" class="search-input" id="searchInput" placeholder="Search...">
+        <button class="search-btn" id="searchBtn" onclick="toggleSearch(event)" title="Search">
+          <i class="fa-solid fa-magnifying-glass"></i>
+        </button>
+      </div>
+      <div class="hdr-rules">
+        <span class="rl1">Rules</span>
+        <span class="rl2"><i class="fa-brands fa-android"></i> <span class="apk-txt">Download Apk</span></span>
+      </div>
+      <div class="hdr-bal">
+        <div class="b1">Bal:<strong>1500</strong></div>
+        <div class="b2">Exp:0</div>
+      </div>
+      <div class="hdr-demo">Demo <i class="fa-solid fa-chevron-down"></i></div>
+      <a class="hdr-logout" href="./index.html" title="Logout">
+        <i class="fa-solid fa-right-from-bracket"></i>
+      </a>
+    </div>
+  </div>
+
+  <div class="hdr2">
+    <div class="hdr2-track">
+      <span>🚀🔥 IPL 2026 is Streaming Live!</span>
+      <span>🚀🔥 The Game Begins Now!</span>
+      <span>🎯🔥 The ultimate cricket celebration returns...</span>
+      <span>📺🔥 IPL 2026 is Streaming Live!</span>
+      <span>🚀🔥 IPL 2026 is Streaming Live!</span>
+      <span>🚀🔥 The Game Begins Now!</span>
+      <span>🎯🔥 The ultimate cricket celebration returns...</span>
+      <span>📺🔥 IPL 2026 is Streaming Live!</span>
+    </div>
+  </div>
+
+  <div class="hdr3">
+    <div class="ntab on"><i class="fa-solid fa-house"></i> HOME</div>
+    <div class="ntab"><i class="fa-solid fa-ticket"></i> LOTTERY</div>
+    <div class="ntab">CRICKET</div>
+    <div class="ntab"><i class="fa-solid fa-circle-dot"></i> TENNIS</div>
+    <div class="ntab"><i class="fa-solid fa-futbol"></i> FOOTBALL</div>
+    <div class="ntab"><i class="fa-solid fa-table-tennis-paddle-ball"></i> TABLE TENNIS</div>
+    <div class="ntab">BACCARAT</div>
+    <div class="ntab">32 CARDS</div>
+    <div class="ntab"><i class="fa-solid fa-clover"></i> TEENPATTI</div>
+    <div class="ntab"><i class="fa-solid fa-diamond"></i> POKER</div>
+    <div class="ntab">7 LUCKY 7</div>
+    <div class="ntab crash-tab"><i class="fa-solid fa-bolt"></i> CRASH</div>
+  </div>
+</header>
+
+<!-- ===================== MAIN ===================== -->
+<div class="main-wrap">
+  <aside class="sidebar" id="sidebar">
+    <div class="sb-grp">
+      <div class="sb-hd" onclick="toggleSbGrp(this)">Racing Sports <i class="fa-solid fa-chevron-up"></i></div>
+      <div class="sb-body" style="max-height:200px;">
+        <a class="sb-link" href="#">Horse Racing</a>
+        <a class="sb-link" href="#">Greyhound Racing</a>
+      </div>
+    </div>
+    <div class="sb-grp">
+      <div class="sb-hd" onclick="toggleSbGrp(this)">Others <i class="fa-solid fa-chevron-up"></i></div>
+      <div class="sb-body" style="max-height:400px;">
+        <a class="sb-link dim" href="#">Our Casino</a>
+        <a class="sb-link dim" href="#">Our VIP Casino</a>
+        <a class="sb-link" href="#">Our Premium Casino</a>
+        <a class="sb-link" href="#">Our Virtual</a>
+        <a class="sb-link" href="#">Live Casino</a>
+        <a class="sb-link" href="#">Slot Game</a>
+        <a class="sb-link" href="#">Fantasy Game</a>
+      </div>
+    </div>
+    <div class="sb-grp">
+      <div class="sb-hd" onclick="toggleSbGrp(this)">All Sports <i class="fa-solid fa-chevron-up"></i></div>
+      <div class="sb-body" style="max-height:2000px;">
+        <div class="sb-row"><i class="fa-regular fa-square-plus"></i> Politics</div>
+        <div class="sb-row"><i class="fa-regular fa-square-plus"></i> Cricket</div>
+        <div class="sb-row"><i class="fa-regular fa-square-plus"></i> Football</div>
+        <div class="sb-row"><i class="fa-regular fa-square-plus"></i> Tennis</div>
+        <div class="sb-row"><i class="fa-regular fa-square-plus"></i> Table Tennis</div>
+        <div class="sb-row"><i class="fa-regular fa-square-plus"></i> Badminton</div>
+        <div class="sb-row"><i class="fa-regular fa-square-plus"></i> Esoccer</div>
+        <div class="sb-row"><i class="fa-regular fa-square-plus"></i> Basketball</div>
+        <div class="sb-row"><i class="fa-regular fa-square-plus"></i> Volleyball</div>
+        <div class="sb-row"><i class="fa-regular fa-square-plus"></i> Snooker</div>
+        <div class="sb-row"><i class="fa-regular fa-square-plus"></i> Ice Hockey</div>
+        <div class="sb-row"><i class="fa-regular fa-square-plus"></i> E Games</div>
+        <div class="sb-row"><i class="fa-regular fa-square-plus"></i> Futsal</div>
+        <div class="sb-row"><i class="fa-regular fa-square-plus"></i> Handball</div>
+        <div class="sb-row"><i class="fa-regular fa-square-plus"></i> Kabaddi</div>
+        <div class="sb-row"><i class="fa-regular fa-square-plus"></i> Golf</div>
+        <div class="sb-row"><i class="fa-regular fa-square-plus"></i> Rugby League</div>
+        <div class="sb-row"><i class="fa-regular fa-square-plus"></i> Boxing</div>
+        <div class="sb-row"><i class="fa-regular fa-square-plus"></i> Beach Volleyball</div>
+        <div class="sb-row"><i class="fa-regular fa-square-plus"></i> Mixed Martial Arts</div>
+        <div class="sb-row"><i class="fa-regular fa-square-plus"></i> MotoGP</div>
+        <div class="sb-row"><i class="fa-regular fa-square-plus"></i> Chess</div>
+        <div class="sb-row"><i class="fa-regular fa-square-plus"></i> Cycling</div>
+        <div class="sb-row"><i class="fa-regular fa-square-plus"></i> Motorbikes</div>
+        <div class="sb-row"><i class="fa-regular fa-square-plus"></i> Athletics</div>
+        <div class="sb-row"><i class="fa-regular fa-square-plus"></i> Basketball 3X3</div>
+        <div class="sb-row"><i class="fa-regular fa-square-plus"></i> Sumo</div>
+        <div class="sb-row"><i class="fa-regular fa-square-plus"></i> Virtual sports</div>
+        <div class="sb-row"><i class="fa-regular fa-square-plus"></i> Motor Sports</div>
+        <div class="sb-row"><i class="fa-regular fa-square-plus"></i> Baseball</div>
+        <div class="sb-row"><i class="fa-regular fa-square-plus"></i> Rugby Union</div>
+        <div class="sb-row"><i class="fa-regular fa-square-plus"></i> Darts</div>
+        <div class="sb-row"><i class="fa-regular fa-square-plus"></i> American Football</div>
+        <div class="sb-row"><i class="fa-regular fa-square-plus"></i> Soccer</div>
+        <div class="sb-row"><i class="fa-regular fa-square-plus"></i> Esports</div>
+        <div class="sb-row"><i class="fa-regular fa-square-plus"></i> Boat Racing</div>
+        <div class="sb-row"><i class="fa-regular fa-square-plus"></i> Wrestling</div>
+      </div>
+    </div>
+  </aside>
+
+  <div class="content">
+    <!-- Live Strip -->
+    <div class="live-strip">
+      <div class="lpill"><span class="gdot"></span> FIFA WORLD CUP - WINNER 2026</div>
+      <div class="lpill"><span class="gdot"></span> Birrell v J Pegula</div>
+      <div class="lpill"><span class="gdot"></span> Sinner v Ci Tabur</div>
+      <div class="lpill"><span class="gdot"></span> F Auger-Aliassime v Altmaier</div>
+      <div class="lpill"><span class="gdot"></span> San Antonio Spurs vs Oklahoma City</div>
+    </div>
+
+    <!-- Sport Sub Tabs -->
+    <div class="sport-tabs">
+      <div class="stab on">Cricket</div>
+      <div class="stab">Football</div>
+      <div class="stab">Tennis</div>
+      <div class="stab">Table Tennis</div>
+      <div class="stab">Esoccer</div>
+      <div class="stab">Horse Racing</div>
+      <div class="stab">Greyhound Racing</div>
+      <div class="stab">Basketball</div>
+      <div class="stab">Wrestling</div>
+      <div class="stab">Volleyball</div>
+      <div class="stab">Badminton</div>
+      <div class="stab">Snooker</div>
+      <div class="stab">Darts</div>
+      <div class="stab">Boxing</div>
+    </div>
+
+    <!-- MATCH TABLE -->
+    <div class="match-wrap">
+      <div class="match-tbl-scroll" id="matchScroll">
+        <table class="match-tbl">
+          <colgroup>
+            <col class="c-game">
+            <col class="c-ic"><col class="c-ic2"><col class="c-ic3"><col class="c-ic4"><col class="c-ic5">
+            <col class="c-odds"><col class="c-odds">
+            <col class="c-xo"><col class="c-xo">
+            <col class="c-odds"><col class="c-odds">
+          </colgroup>
+          <thead>
+            <tr>
+              <th class="th-game" colspan="6">Game</th>
+              <th colspan="2" style="border-left:2px solid #ddd;">1</th>
+              <th colspan="2">X</th>
+              <th colspan="2">2</th>
+            </tr>
+          </thead>
+          <tbody id="matchBody"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- GAME GRID: 70 games, 10 per row desktop (7 rows), 4 per row mobile -->
+    <div class="games-wrap">
+      <div class="games-grid" id="gamesGrid"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== FOOTER ===================== -->
+<div class="ft-support">24X7 Support</div>
+<div class="ft-bottom">
+  <div class="ft-secure">
+    <div class="ft-shield">
+      <img src="./image/Secure.png" alt="Secure SSL" onerror="this.style.display='none'">
+    </div>
+    <div class="ft-stxt">
+      <div class="t1">100% SAFE</div>
+      <p>Protected connection and encrypted data.</p>
+    </div>
+  </div>
+  <div class="ft-logos">
+    <div class="ftlc"><img src="./image/footericon1.png" alt="18+" onerror="this.style.display='none'"></div>
+    <div class="ftlc"><img src="./image/footericon2.png" alt="Google Play" onerror="this.style.display='none'"></div>
+    <div class="ftlc"><img src="./image/footericon3.png" alt="GT" onerror="this.style.display='none'"></div>
+  </div>
+</div>
+<div class="ft-copy">© Copyright 2026. All Rights Reserved. Powered by ALLPANEL247.</div>
+
+<!-- ===================== SCRIPTS ===================== -->
+<script>
+/* POPUP - close on overlay click */
+document.getElementById('overlay').addEventListener('click', function(e){
+  if(e.target === this) this.style.display = 'none';
+});
+
+/* NAV TABS */
+document.querySelectorAll('.ntab').forEach(t => t.addEventListener('click', function(){
+  document.querySelectorAll('.ntab').forEach(x => x.classList.remove('on'));
+  this.classList.add('on');
+}));
+document.querySelectorAll('.stab').forEach(t => t.addEventListener('click', function(){
+  document.querySelectorAll('.stab').forEach(x => x.classList.remove('on'));
+  this.classList.add('on');
+}));
+
+/* SIDEBAR COLLAPSE */
+function toggleSbGrp(hd){
+  const body = hd.nextElementSibling;
+  const isOpen = !body.classList.contains('collapsed');
+  if(isOpen){
+    body.style.maxHeight = body.scrollHeight + 'px';
+    requestAnimationFrame(() => requestAnimationFrame(() => {
+      body.classList.add('collapsed');
+      body.style.maxHeight = '0';
+    }));
+    hd.classList.add('collapsed');
+  } else {
+    body.classList.remove('collapsed');
+    body.style.maxHeight = body.scrollHeight + 'px';
+    hd.classList.remove('collapsed');
+    body.addEventListener('transitionend', function h(){
+      body.style.maxHeight = '9999px';
+      body.removeEventListener('transitionend', h);
+    });
+  }
+}
+
+/* MOBILE SIDEBAR */
+function toggleSidebar(){
+  document.getElementById('sidebar').classList.toggle('mob-open');
+  document.getElementById('mobOverlay').classList.toggle('show');
+}
+function closeSidebar(){
+  document.getElementById('sidebar').classList.remove('mob-open');
+  document.getElementById('mobOverlay').classList.remove('show');
+}
+
+/* SEARCH */
+let searchOpen = false;
+function toggleSearch(e){
+  if(e) e.stopPropagation();
+  searchOpen = !searchOpen;
+  const inp = document.getElementById('searchInput');
+  const wrap = document.getElementById('searchWrap');
+  if(searchOpen){ inp.classList.add('open'); wrap.classList.add('open'); setTimeout(()=>inp.focus(),350); }
+  else { inp.classList.remove('open'); wrap.classList.remove('open'); inp.value=''; }
+}
+document.addEventListener('click', function(e){
+  const wrap = document.getElementById('searchWrap');
+  if(searchOpen && !wrap.contains(e.target)){
+    searchOpen = false;
+    document.getElementById('searchInput').classList.remove('open');
+    wrap.classList.remove('open');
+    document.getElementById('searchInput').value = '';
+  }
+});
+document.getElementById('searchInput').addEventListener('click', e=>e.stopPropagation());
+
+/* MATCH TABLE DATA */
+const M = [
+  {n:'Super Over2',date:'',dot:1,tv:1,f:1,bm:1,e:0,gd:0,o:['L','L','-','-','L','L']},
+  {n:'Indian Premier League',date:'28/03/2026 19:00:00',dot:1,tv:0,f:1,bm:1,e:0,gd:0,o:['L','L','-','-','L','L']},
+  {n:'Kolkata Knight Riders (e) - Rajasthan Royals (e)',date:'26/05/2026 09:48:00',dot:1,tv:1,f:0,bm:0,e:1,gd:0,o:['L','L','-','-','L','L']},
+  {n:'Hampshire v Essex',date:'26/05/2026 23:00:00',dot:1,tv:1,f:1,bm:1,e:0,gd:0,o:['-','1.01','-','-','1000','-']},
+  {n:'Brisbane Heat XI v Hobart Hurricanes XI',date:'27/05/2026 00:30:00',dot:1,tv:0,f:1,bm:0,e:0,gd:1,o:['L','L','-','-','L','L']},
+  {n:'GAW XI v SNP XI',date:'27/05/2026 01:05:00',dot:1,tv:0,f:1,bm:0,e:0,gd:1,o:['L','L','-','-','L','L']},
+  {n:'Kolkata Knight Riders (e) - Chennai Super Kings (e)',date:'27/05/2026 01:42:00',dot:1,tv:1,f:0,bm:0,e:1,gd:0,o:['L','L','-','-','L','L']},
+  {n:'Punjab Kings (e) - Gujarat Titans (e)',date:'27/05/2026 01:42:00',dot:1,tv:1,f:0,bm:0,e:1,gd:0,o:['L','L','-','-','L','L']},
+  {n:'Kolkata Knight Riders (e) - Punjab Kings (e)',date:'27/05/2026 01:45:00',dot:1,tv:1,f:0,bm:0,e:1,gd:0,o:['L','L','-','-','L','L']},
+  {n:'Mumbai Indians (e) - Kolkata Knight Riders (e)',date:'27/05/2026 01:48:00',dot:0,tv:1,f:0,bm:0,e:1,gd:0,o:['L','L','-','-','L','L']},
+  {n:'Royal Challengers Bengaluru (e) - Rajasthan Royals (e)',date:'27/05/2026 01:48:00',dot:0,tv:1,f:0,bm:0,e:1,gd:0,o:['L','L','-','-','L','L']},
+  {n:'Ireland v New Zealand',date:'27/05/2026 15:00:00',dot:0,tv:0,f:1,bm:0,e:0,gd:0,o:['18','20','9.8','10.5','1.17','1.18']},
+  {n:'Somerset W v Yorkshire W',date:'27/05/2026 18:30:00',dot:0,tv:0,f:0,bm:0,e:0,gd:0,o:['1.81','2.26','-','-','1.79','2.22']},
+  {n:'Warwickshire W v The Blaze W',date:'27/05/2026 18:30:00',dot:0,tv:0,f:0,bm:0,e:0,gd:0,o:['2.34','2.76','-','-','1.6','1.74']},
+  {n:'Sunrisers Hyderabad v Rajasthan Royals',date:'27/05/2026 19:00:00',dot:0,tv:0,f:1,bm:1,e:0,gd:0,o:['1.9','1.91','-','-','2.1','2.12']},
+  {n:'Leicestershire v Derbyshire',date:'27/05/2026 22:30:00',dot:0,tv:0,f:1,bm:0,e:0,gd:0,o:['1.78','1.89','-','-','2.12','2.3']},
+  {n:'Surrey W v Durham W',date:'27/05/2026 22:30:00',dot:0,tv:0,f:0,bm:0,e:0,gd:0,o:['1.51','1.69','-','-','2.44','2.98']},
+];
+
+function mkTd(v,isLay){
+  const td=document.createElement('td');
+  if(v==='L'){td.className='td-lock';td.innerHTML='<div class="ov-lock"><i class="fa-solid fa-lock"></i></div>';}
+  else if(v==='-'){td.className=isLay?'td-lay':'td-dash';td.innerHTML='<span class="dash-txt">-</span>';}
+  else{td.className=isLay?'td-lay':'td-back';td.innerHTML=`<span class="ov">${v}</span>`;}
+  return td;
+}
+const tb=document.getElementById('matchBody');
+M.forEach(m=>{
+  const tr=document.createElement('tr');
+  const tdG=document.createElement('td');tdG.className='td-game';
+  tdG.innerHTML=`<span class="gname">${m.n}</span>${m.date?' <span class="gdate">/ '+m.date+'</span>':''}`;
+  tr.appendChild(tdG);
+  const d1=document.createElement('td');d1.className='td-ic';d1.innerHTML=m.dot?'<span class="gdot-s"></span>':'';tr.appendChild(d1);
+  const d2=document.createElement('td');d2.className='td-ic';d2.innerHTML=m.tv?'<i class="fa-solid fa-tv ic-tv"></i>':'';tr.appendChild(d2);
+  const d3=document.createElement('td');d3.className='td-ic';d3.innerHTML=m.f?'<span class="bdg-f">f</span>':'';tr.appendChild(d3);
+  const d4=document.createElement('td');d4.className='td-ic';d4.innerHTML=m.bm?'<span class="bdg-bm">BM</span>':'';tr.appendChild(d4);
+  const d5=document.createElement('td');d5.className='td-ic';
+  if(m.e)d5.innerHTML='<span class="bdg-e">e</span>';
+  else if(m.gd)d5.innerHTML='<i class="fa-solid fa-grip bdg-grid"></i>';
+  tr.appendChild(d5);
+  const[b1,l1,xb,xl,b2,l2]=m.o;
+  const t1b=mkTd(b1,false);t1b.style.borderLeft='2px solid #ddd';tr.appendChild(t1b);
+  tr.appendChild(mkTd(l1,true));
+  tr.appendChild(mkTd(xb,false));
+  tr.appendChild(mkTd(xl,true));
+  tr.appendChild(mkTd(b2,false));
+  tr.appendChild(mkTd(l2,true));
+  tb.appendChild(tr);
+});
+
+/* ===================== GAME GRID: 70 games, 10/row desktop, 4/row mobile ===================== */
+const GAMES = [
+  {img:'./image/clickfunnelimage01.gif', lbl:'MATKA MARKET'},
+  {img:'./image/clickfunnelimage02.gif', lbl:'VIP TEENPATTI 1DAY'},
+  {img:'./image/clickfunnelimage03.gif', lbl:'DOLI DANA LIVE'},
+  {img:'./image/clickfunnelimage04.jpg', lbl:'MOGAMBO'},
+  {img:'./image/clickfunnelimage05.jpg', lbl:'20-20 TEEN PATTI'},
+  {img:'./image/clickfunnelimage06.jpg', lbl:'LUCKY 6'},
+  {img:'./image/clickfunnelimage07.jpg', lbl:'BEACH ROULETTE'},
+  {img:'./image/clickfunnelimage08 (1).jpg', lbl:'GOLDEN ROULETTE'},
+  {img:'./image/clickfunnelimage09.jpg', lbl:'ROULETTE'},
+  {img:'./image/clickfunnelimage09.jpg', lbl:'POISON TP ONE DAY'},
+  {img:'./image/clickfunnelimage10.jpg', lbl:'UNIQUE TEENPATTI'},
+  {img:'./image/clickfunnelimage11.jpg', lbl:'POISON TP 20-20'},
+  {img:'./image/clickfunnelimage12.jpg', lbl:'UNLIMITED JOKER 20-20'},
+  {img:'./image/clickfunnelimage13.jpg', lbl:'TEENPATTI JOKER 20-20'},
+  {img:'./image/clickfunnelimage14.jpg', lbl:'UNLIMITED JOKER ONEDAY'},
+  {img:'./image/clickfunnelimage15.jpg', lbl:'20-20 TEENPATTI C'},
+  {img:'./image/clickfunnelimage16.jpg', lbl:'2 BOLLYWOOD CASINO'},
+  {img:'./image/clickfunnelimage17.jpg', lbl:'UNIQUE ROULETTE'},
+  {img:'./image/clickfunnelimage18.jpg', lbl:'MINI SUPER OVER'},
+  {img:'./image/clickfunnelimage19.jpg', lbl:'GOAL'},
+  {img:'./image/clickfunnelimage20.jpg', lbl:'ANDAR BAHAR 150'},
+  {img:'./image/clickfunnelimage21.jpg', lbl:'LUCKY 15'},
+  {img:'./image/clickfunnelimage22.jpg', lbl:'SUPER OVER 2'},
+  {img:'./image/clickfunnelimage23.jpg', lbl:'QUEEN TOP OPEN'},
+  {img:'./image/clickfunnelimage24.jpg', lbl:'JACK TOP OPEN'},
+  {img:'./image/clickfunnelimage25.jpg', lbl:'SIC BO 2'},
+  {img:'./image/clickfunnelimage26.jpg', lbl:'INSTANT TP 3.0'},
+  {img:'./image/clickfunnelimage27.jpg', lbl:'SIC BO'},
+  {img:'./image/clickfunnelimage28.jpg', lbl:'BALL BY BALL'},
+  {img:'./image/clickfunnelimage29.jpg', lbl:'INSTANT TP 2.0'},
+  {img:'./image/clickfunnelimage30.jpg', lbl:'TEENPATTI 1 DAY'},
+  {img:'./image/clickfunnelimage31.jpg', lbl:'20-20 TEENPATTI'},
+  {img:'./image/clickfunnelimage32.jpg', lbl:'TEENPATTI TEST'},
+  {img:'./image/clickfunnelimage33.jpg', lbl:'TEENPATTI OPEN'},
+  {img:'./image/clickfunnelimage34.jpg', lbl:'POKER 1 DAY'},
+  {img:'./image/clickfunnelimage35.jpg', lbl:'20-20 POKER'},
+  {img:'./image/clickfunnelimage36.jpg', lbl:'POKER 6 PLAYERS'},
+  {img:'./image/clickfunnelimage37.jpg', lbl:'BACCARAT'},
+  {img:'./image/clickfunnelimage38.jpg', lbl:'BACCARAT 2'},
+  {img:'./image/clickfunnelimage39.jpg', lbl:'20-20 DRAGON TIGER'},
+  {img:'./image/clickfunnelimage40.jpg', lbl:'1 DAY DRAGON TIGER'},
+  {img:'./image/clickfunnelimage41.jpg', lbl:'20-20 DTL'},
+  {img:'./image/clickfunnelimage42.jpg', lbl:'20-20 DT 2'},
+  {img:'./image/clickfunnelimage43.jpg', lbl:'32 CARDS A'},
+  {img:'./image/clickfunnelimage44.jpg', lbl:'32 CARDS B'},
+  {img:'./image/clickfunnelimage45.jpg', lbl:'ANDAR BAHAR'},
+  {img:'./image/clickfunnelimage46.jpg', lbl:'ANDAR BAHAR 2'},
+  {img:'./image/clickfunnelimage47.jpg', lbl:'7-A LUCKY'},
+  {img:'./image/clickfunnelimage48.jpg', lbl:'7-B LUCKY'},
+  {img:'./image/clickfunnelimage49.jpg', lbl:'3 CARDS JUDGEMENT'},
+  {img:'./image/clickfunnelimage50.jpg', lbl:'CASINO WAR'},
+  {img:'./image/clickfunnelimage51.jpg', lbl:'WORLI MATKA'},
+  {img:'./image/clickfunnelimage52.jpg', lbl:'INSTANT WORLI'},
+  {img:'./image/clickfunnelimage53.jpg', lbl:'AMAR AKBAR ANTHONY'},
+  {img:'./image/clickfunnelimage54.jpg', lbl:'BOLLYWOOD CASINO'},
+  {img:'./image/clickfunnelimage55.jpg', lbl:'LOTTERY'},
+  {img:'./image/clickfunnelimage56.jpg', lbl:'5 FIVE CRICKET'},
+  {img:'./image/clickfunnelimage57.jpg', lbl:'CRICKET MATCH 20-20'},
+  {img:'./image/clickfunnelimage58.jpg', lbl:'CASINO METER'},
+  {img:'./image/clickfunnelimage59.jpg', lbl:'TEENPATTI 2.0'},
+  {img:'./image/clickfunnelimage60.jpg', lbl:'QUEEN'},
+  {img:'./image/clickfunnelimage61.jpg', lbl:'RACE 20'},
+  {img:'./image/clickfunnelimage62.jpg', lbl:'LUCKY 7-C CASINO'},
+  {img:'./image/clickfunnelimage63.jpg', lbl:'SUPER OVER RSA ENG'},
+  {img:'./image/clickfunnelimage64.jpg', lbl:'THE TRAP'},
+  {img:'./image/clickfunnelimage65.jpg', lbl:'2 CARDS TEENPATTI'},
+  {img:'./image/clickfunnelimage66.jpg', lbl:'29 BACCARAT'},
+  {img:'./image/clickfunnelimage67.jpg', lbl:'MUFLIS TEENPATTI'},
+  {img:'./image/clickfunnelimage68.jpg', lbl:'RACE TO 17'},
+  {img:'./image/clickfunnelimage69.jpg', lbl:'20-20 TEENPATTI B'},
+];
+
+const grid = document.getElementById('gamesGrid');
+GAMES.forEach(g => {
+  const div = document.createElement('div');
+  div.className = 'gc';
+  div.innerHTML = `<img src="${g.img}" alt="${g.lbl}" loading="lazy"><div class="gc-lbl">${g.lbl}</div>`;
+  grid.appendChild(div);
+});
+</script>
+</body>
+</html>
