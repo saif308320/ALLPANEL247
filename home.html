@@ -53,6 +53,14 @@ a{text-decoration:none;color:inherit;}
 .demo-dropdown a{display:block;padding:9px 16px;font-size:15px;color:#666;font-weight:500;text-decoration:none;border-bottom:1px solid #f0f0f0;white-space:nowrap;}
 .demo-dropdown a:last-child{border-bottom:none;}
 .demo-dropdown a:hover{background:#f5f5f5;text-decoration:underline;}
+.demo-dropdown a{display:flex;align-items:center;gap:10px;padding:11px 16px;font-size:14px;font-family:'Roboto Condensed',Arial,sans-serif;color:#444;font-weight:600;text-decoration:none;border-bottom:1px solid #f0f0f0;white-space:nowrap;transition:background 0.12s;}
+.demo-dropdown a i{width:18px;text-align:center;font-size:14px;color:#0088cc;}
+.demo-dropdown a:last-child{border-bottom:none;}
+.demo-dropdown a:hover{background:#f0f7ff;color:var(--blue);}
+.demo-dropdown a:hover i{color:var(--blue-dark);}
+.demo-dropdown .dd-signout{color:#cc0000 !important;font-weight:700 !important;border-top:2px solid #eee !important;}
+.demo-dropdown .dd-signout i{color:#cc0000 !important;}
+.demo-dropdown .dd-signout:hover{background:#fff5f5 !important;color:#990000 !important;}
 .demo-dropdown .dd-signout{color:#cc0000 !important;font-weight:700 !important;border-top:2px solid #eee !important;display:flex;align-items:center;gap:7px;}
 .demo-dropdown .dd-signout:hover{background:#fff5f5 !important;color:#990000 !important;}
 .dd-check{display:none;align-items:center;justify-content:space-between;padding:9px 16px;font-size:15px;color:#666;font-weight:500;border-bottom:1px solid #f0f0f0;}
@@ -64,7 +72,7 @@ a{text-decoration:none;color:inherit;}
 @keyframes hscroll{0%{transform:translateX(0);}100%{transform:translateX(-50%);}}
 .hdr3{background:#111;display:flex;align-items:stretch;overflow-x:auto;scrollbar-width:none;min-height:40px;}
 .hdr3::-webkit-scrollbar{display:none;}
-.ntab{color:#b0b0b0;font-size:11.5px;font-weight:700;letter-spacing:0.4px;text-transform:uppercase;padding:0 13px;display:flex;align-items:center;gap:5px;white-space:nowrap;cursor:pointer;position:relative;border-right:1px solid #1e1e1e;flex-shrink:0;}
+.ntab{color:#b0b0b0;font-size:14px;font-weight:700;letter-spacing:0.4px;text-transform:uppercase;padding:0 13px;display:flex;align-items:center;gap:5px;white-space:nowrap;cursor:pointer;position:relative;border-right:1px solid #1e1e1e;flex-shrink:0;}
 .ntab:hover{color:#fff;background:rgba(255,255,255,0.04);}
 .ntab.on{color:#fff;}
 .ntab.on::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:var(--blue);}
@@ -82,9 +90,9 @@ a{text-decoration:none;color:inherit;}
 .sb-link{display:block;font-size:12.5px;font-weight:500;color:#111;padding:6px 12px;cursor:pointer;background:#d0d0d0;border-bottom:1px solid #c0c0c0;}
 .sb-link:hover{background:#b8d8f0;color:var(--blue);}
 .sb-link.dim{color:#666;}
-.sb-row{display:flex;align-items:center;gap:7px;font-size:12.5px;font-weight:500;color:#111;padding:6px 10px;cursor:pointer;background:#d0d0d0;border-bottom:1px solid #c0c0c0;}
+.sb-row{display:flex;align-items:center;gap:7px;font-size:13px;font-weight:500;color:#111;padding:6px 10px;cursor:pointer;background:#d0d0d0;border-bottom:1px solid #c0c0c0;}
 .sb-row:hover{background:#b8d8f0;color:var(--blue);}
-.sb-row i{font-size:12px;color:#111;flex-shrink:0;}
+.sb-row i{font-size:14px;color:#111;flex-shrink:0;}
 .content{flex:1;min-width:0;background:#ebebeb;}
 .live-strip{background:#1c2b3a;display:flex;overflow-x:auto;scrollbar-width:none;border-bottom:1px solid #2a2a2a;gap:0;margin-bottom:4px;margin-top:4px;}
 .live-strip::-webkit-scrollbar{display:none;}
@@ -188,6 +196,26 @@ a{text-decoration:none;color:inherit;}
 .rules-closebtn{background:#cc0000;color:#fff;border:none;font-size:14px;font-weight:700;padding:11px;cursor:pointer;flex-shrink:0;width:100%;}
 .rules-closebtn:hover{background:#a80000;}
 
+/* ===== SET BUTTON VALUE MODAL ===== */
+.sbv-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.6);z-index:9998;align-items:flex-start;justify-content:center;}
+.sbv-overlay.show{display:flex;}
+.sbv-box{width:500px;max-width:94vw;max-height:96vh;margin-top:2vh;background:#fff;border-radius:4px;overflow:hidden;display:flex;flex-direction:column;}
+.sbv-hdr{background:var(--blue);color:#fff;display:flex;align-items:center;justify-content:space-between;padding:14px 18px;font-size:20px;font-weight:700;flex-shrink:0;}
+.sbv-close-x{background:none;border:none;color:#fff;font-size:22px;cursor:pointer;line-height:1;}
+.sbv-tabs{display:flex;flex-shrink:0;}
+.sbv-tab{flex:1;text-align:center;font-size:15px;font-weight:700;color:#333;background:#e6e6e6;padding:12px 10px;cursor:pointer;}
+.sbv-tab.on{background:#2c3e50;color:#fff;}
+.sbv-body{overflow-y:auto;flex:1;padding:16px 18px;}
+.sbv-cols{display:flex;justify-content:space-between;font-size:15px;font-weight:700;color:#222;margin-bottom:8px;}
+.sbv-row{display:flex;gap:14px;margin-bottom:12px;}
+.sbv-row input{flex:1;width:100%;padding:9px 12px;font-size:14px;border:1px solid #ccc;border-radius:3px;outline:none;color:#333;}
+.sbv-row input:focus{border-color:var(--blue);}
+.sbv-update{margin:4px 18px 18px;background:var(--blue);color:#fff;border:none;font-size:15px;font-weight:700;padding:10px 28px;border-radius:3px;cursor:pointer;align-self:flex-start;flex-shrink:0;}
+.sbv-update:hover{background:var(--blue-dark);}
+.sbv-toast{display:none;position:fixed;top:14px;left:50%;transform:translateX(-50%);background:#fff;border:1px solid #4caf50;border-radius:4px;padding:10px 22px;font-size:15px;font-weight:700;color:#222;align-items:center;gap:10px;z-index:10000;box-shadow:0 4px 16px rgba(0,0,0,0.18);}
+.sbv-toast.show{display:flex;}
+.sbv-toast i{color:#4caf50;font-size:18px;}
+
 /* ===== CASINO SUB-TABS ===== */
 .casino-bar{background:rgb(90, 178, 222);display:flex;align-items:stretch;overflow:hidden;}
 .casino-arrow{flex-shrink:0;width:50px;display:flex;align-items:center;justify-content:center;background: linear-gradient(
@@ -250,6 +278,7 @@ color:#000000;cursor:pointer;font-size:13px;border:none;}
   .stab{font-size:11px;padding:8px 11px;}
   .demo-dropdown{right:0;min-width:170px;}
   .rules-box{width:100vw;max-width:100vw;height:100dvh;max-height:100dvh;border-radius:0;}
+  .sbv-box{width:100vw;max-width:100vw;height:100dvh;max-height:100dvh;margin-top:0;border-radius:0;}
   .casino-grid{grid-template-columns:repeat(3,1fr);gap:5px;}
   .ctab{padding:9px 13px;font-size:12px;}
   .casino-arrow{width:30px;}
@@ -303,6 +332,26 @@ color:#000000;cursor:pointer;font-size:13px;border:none;}
   </div>
 </div>
 
+<!-- SET BUTTON VALUE MODAL -->
+<div class="sbv-toast" id="sbvToast"><i class="fa-solid fa-circle-check"></i> Update Button Value</div>
+<div class="sbv-overlay" id="sbvOverlay">
+  <div class="sbv-box">
+    <div class="sbv-hdr">
+      <span>Set Button Value</span>
+      <button class="sbv-close-x" onclick="closeSBV()">&#x2715;</button>
+    </div>
+    <div class="sbv-tabs">
+      <div class="sbv-tab on" onclick="switchSBVTab(this,'game')">Game Buttons</div>
+      <div class="sbv-tab" onclick="switchSBVTab(this,'casino')">Casino Buttons</div>
+    </div>
+    <div class="sbv-body" id="sbvBody">
+      <div class="sbv-cols"><span>Price Label:</span><span>Price Value:</span></div>
+      <div id="sbvRows"></div>
+    </div>
+    <button class="sbv-update" onclick="updateSBV()">Update</button>
+  </div>
+</div>
+
 <header>
   <div class="hdr1">
     <button class="mob-menu-btn" onclick="toggleSidebar()"><i class="fa-solid fa-bars"></i></button>
@@ -326,11 +375,10 @@ color:#000000;cursor:pointer;font-size:13px;border:none;}
       <div class="hdr-demo-wrap" id="demoWrap">
         <div class="hdr-demo" onclick="toggleDemo(event)">Demo <i class="fa-solid fa-chevron-down"></i></div>
         <div class="demo-dropdown">
-          <a href="./account-statement.html">Account Statement</a>
-          <a href="./current-bet.html">Current Bet</a>
-          <a href="./casino-results.html">Casino Results</a>
-          <a href="./set-button-values.html">Set Button Values</a>
-          <a href="javascript:void(0)" class="dd-mobile-only" onclick="openRules(event)">Rules</a>
+        <a href="./account-statement.html"><i class="fa-solid fa-file-lines"></i> Account Statement</a>
+          <a href="./current-bet.html"><i class="fa-solid fa-clock-rotate-left"></i> Current Bet</a>
+          <a href="./casino-results.html"><i class="fa-solid fa-dice"></i> Casino Results</a>
+<a href="javascript:void(0)" onclick="openSBV(event)"><i class="fa-solid fa-sliders"></i> Set Button Values</a>
           <div class="dd-check dd-mobile-only"><span>Balance</span><input type="checkbox" id="ddBalanceChk" checked onclick="toggleHdrPart('b1',this)"></div>
           <div class="dd-check dd-mobile-only"><span>Exposure</span><input type="checkbox" id="ddExpChk" checked onclick="toggleHdrPart('b2',this)"></div>
           <a href="./index.html" class="dd-signout"><i class="fa-solid fa-right-from-bracket"></i> SignOut</a>
@@ -859,7 +907,7 @@ function toggleHdrPart(part, chk) {
 }
 
 /* ================================================================
-   RULES MODAL  ← FIX: closeRules() was missing in original
+   RULES MODAL
    ================================================================ */
 var RULES_DATA = {
   football: [
@@ -935,22 +983,90 @@ function openRules(e) {
   if (e) { e.preventDefault(); e.stopPropagation(); }
   document.getElementById('demoWrap').classList.remove('open');
   document.getElementById('rulesOverlay').classList.add('show');
-  /* Reset to first tab */
   var tabs = document.querySelectorAll('.rtab2');
   tabs.forEach(function(t) { t.classList.remove('on'); });
   if (tabs[0]) tabs[0].classList.add('on');
   renderRulesTab('football');
 }
 
-/* *** THIS WAS THE MISSING FUNCTION — main bug fix *** */
 function closeRules() {
   document.getElementById('rulesOverlay').classList.remove('show');
 }
 
-/* Close rules modal on background click */
 document.getElementById('rulesOverlay').addEventListener('click', function(e) {
   if (e.target === this) closeRules();
 });
+
+/* ================================================================
+   SET BUTTON VALUE MODAL
+   ================================================================ */
+var SBV_DATA = {
+  game: [
+    {label:'1k', value:'1000'}, {label:'2k', value:'2000'}, {label:'5k', value:'5000'},
+    {label:'10k', value:'10000'}, {label:'20k', value:'20000'}, {label:'25k', value:'25000'},
+    {label:'50k', value:'50000'}, {label:'75k', value:'75000'}, {label:'90k', value:'90000'},
+    {label:'95k', value:'95000'}
+  ],
+  casino: [
+    {label:'25', value:'25'}, {label:'50', value:'50'}, {label:'100', value:'100'},
+    {label:'200', value:'200'}, {label:'500', value:'500'}, {label:'1000', value:'1000'}
+  ]
+};
+var sbvCurrentTab = 'game';
+
+function renderSBVRows(tab) {
+  var rowsEl = document.getElementById('sbvRows');
+  rowsEl.innerHTML = '';
+  SBV_DATA[tab].forEach(function(item, idx) {
+    var row = document.createElement('div');
+    row.className = 'sbv-row';
+    row.innerHTML =
+      '<input type="text" data-tab="' + tab + '" data-idx="' + idx + '" data-field="label" value="' + item.label + '">' +
+      '<input type="text" data-tab="' + tab + '" data-idx="' + idx + '" data-field="value" value="' + item.value + '">';
+    rowsEl.appendChild(row);
+  });
+}
+
+function switchSBVTab(el, tab) {
+  document.querySelectorAll('.sbv-tab').forEach(function(t) { t.classList.remove('on'); });
+  el.classList.add('on');
+  sbvCurrentTab = tab;
+  renderSBVRows(tab);
+  document.getElementById('sbvBody').scrollTop = 0;
+}
+
+function openSBV(e) {
+  if (e) { e.preventDefault(); e.stopPropagation(); }
+  document.getElementById('demoWrap').classList.remove('open');
+  document.getElementById('sbvOverlay').classList.add('show');
+  document.querySelectorAll('.sbv-tab').forEach(function(t) { t.classList.remove('on'); });
+  document.querySelector('.sbv-tab').classList.add('on');
+  sbvCurrentTab = 'game';
+  renderSBVRows('game');
+}
+
+function closeSBV() {
+  document.getElementById('sbvOverlay').classList.remove('show');
+}
+
+document.getElementById('sbvOverlay').addEventListener('click', function(e) {
+  if (e.target === this) closeSBV();
+});
+
+function updateSBV() {
+  /* Save edited label/value pairs back into SBV_DATA */
+  var inputs = document.querySelectorAll('#sbvRows input');
+  inputs.forEach(function(inp) {
+    var tab = inp.getAttribute('data-tab');
+    var idx = parseInt(inp.getAttribute('data-idx'), 10);
+    var field = inp.getAttribute('data-field');
+    SBV_DATA[tab][idx][field] = inp.value;
+  });
+
+  var toast = document.getElementById('sbvToast');
+  toast.classList.add('show');
+  setTimeout(function() { toast.classList.remove('show'); }, 2000);
+}
 
 /* ================================================================
    PAGE TAB SYSTEM
@@ -1206,7 +1322,6 @@ function fillCasinoGridAll(pageKey) {
       combined.push({src: src, lbl: lbls[i] || ''});
     });
   });
-  /* Remove duplicates by src */
   var seen = {};
   combined = combined.filter(function(item) {
     if (seen[item.src]) return false;

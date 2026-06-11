@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ALL - Account Statement</title>
+<title>ALL - Current Bet</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -97,7 +97,7 @@ a{text-decoration:none;color:inherit;}
 .sbv-toast.show{display:flex;}
 .sbv-toast i{color:#4caf50;font-size:18px;}
 @media(max-width:700px){.sbv-box{width:100vw;max-width:100vw;height:100dvh;max-height:100dvh;margin-top:0;border-radius:0;}}
-/* ===== ACCOUNT STATEMENT PAGE ===== */
+/* ===== CURRENT BET PAGE ===== */
 .as-wrap{padding:0;}
 .as-titlebar{background:#2c3e50;color:#fff;font-size:17px;font-weight:700;padding:13px 16px;display:flex;align-items:center;gap:10px;font-family:'Roboto Condensed',Arial,sans-serif;}
 .as-filters{background:#fff;padding:14px 16px;display:flex;flex-wrap:wrap;align-items:flex-end;gap:12px;border-bottom:1px solid #e2e2e2;}
@@ -105,11 +105,6 @@ a{text-decoration:none;color:inherit;}
 .as-field label{font-size:11.5px;font-weight:700;color:#666;text-transform:uppercase;letter-spacing:.3px;font-family:'Roboto Condensed',Arial,sans-serif;}
 .as-input{height:38px;border:1px solid #ccc;border-radius:3px;padding:0 10px;font-size:14px;color:#333;background:#fff;outline:none;min-width:150px;font-family:'Roboto Condensed',Arial,sans-serif;}
 .as-input:focus{border-color:var(--blue);}
-.as-date-wrap{position:relative;}
-.as-date-wrap input[type="date"]{-webkit-appearance:none;appearance:none;width:185px;height:38px;border:1px solid #ccc;border-radius:3px;padding:0 36px 0 10px;font-size:14px;color:#333;background:#fff;outline:none;cursor:pointer;font-family:'Roboto Condensed',Arial,sans-serif;}
-.as-date-wrap input[type="date"]:focus{border-color:var(--blue);}
-.as-date-wrap input[type="date"]::-webkit-calendar-picker-indicator{position:absolute;right:8px;top:50%;transform:translateY(-50%);width:20px;height:20px;cursor:pointer;opacity:0.65;}
-.as-date-wrap input[type="date"]::-webkit-calendar-picker-indicator:hover{opacity:1;}
 .as-select-wrap{position:relative;}
 .as-select{-webkit-appearance:none;appearance:none;height:38px;border:1px solid #ccc;border-radius:3px;padding:0 34px 0 10px;font-size:14px;color:#333;background:#fff;outline:none;cursor:pointer;min-width:230px;font-family:'Roboto Condensed',Arial,sans-serif;}
 .as-select:focus{border-color:var(--blue);}
@@ -122,15 +117,26 @@ a{text-decoration:none;color:inherit;}
 .as-show-select-wrap{position:relative;}
 .as-show-select{-webkit-appearance:none;appearance:none;height:34px;border:1px solid #ccc;border-radius:3px;padding:0 28px 0 10px;font-size:13px;color:#333;background:#fff;outline:none;cursor:pointer;min-width:64px;font-family:'Roboto Condensed',Arial,sans-serif;}
 .as-show-select-wrap::after{content:'\f078';font-family:'Font Awesome 6 Free';font-weight:900;position:absolute;right:9px;top:50%;transform:translateY(-50%);font-size:10px;color:#777;pointer-events:none;}
+/* Bet type radio group */
+.as-bettype{display:flex;align-items:center;gap:18px;font-size:13.5px;color:#333;font-weight:500;font-family:'Roboto Condensed',Arial,sans-serif;}
+.as-bettype label{display:flex;align-items:center;gap:6px;cursor:pointer;white-space:nowrap;}
+.as-bettype input[type="radio"]{width:16px;height:16px;accent-color:var(--blue);cursor:pointer;}
+/* Totals */
+.as-totals{display:flex;align-items:center;gap:18px;font-size:13.5px;color:#333;font-weight:700;font-family:'Roboto Condensed',Arial,sans-serif;white-space:nowrap;}
+.as-totals span b{color:var(--blue);font-weight:700;}
 .as-search{display:flex;align-items:center;gap:8px;font-size:13.5px;color:#333;font-weight:500;font-family:'Roboto Condensed',Arial,sans-serif;}
 .as-search-input{height:34px;border:1px solid #ccc;border-radius:3px;padding:0 10px;font-size:13px;color:#333;background:#fff;outline:none;min-width:200px;font-family:'Roboto Condensed',Arial,sans-serif;}
 .as-search-input:focus{border-color:var(--blue);}
 .as-table-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;background:#fff;}
-.as-table{width:100%;min-width:680px;border-collapse:collapse;}
+.as-table{width:100%;min-width:780px;border-collapse:collapse;}
 .as-table thead th{background:#f4f4f4;font-size:12.5px;font-weight:700;color:#444;padding:11px 14px;text-align:left;border-bottom:1.5px solid #ddd;white-space:nowrap;font-family:'Roboto Condensed',Arial,sans-serif;}
 .as-table thead th:nth-child(2),.as-table thead th:nth-child(3),.as-table thead th:nth-child(4),.as-table thead th:nth-child(5){text-align:center;}
+.as-table thead th:last-child{text-align:center;width:50px;}
 .as-table tbody td{padding:14px;font-size:13px;color:#333;border-bottom:1px solid #eee;text-align:center;font-family:'Roboto Condensed',Arial,sans-serif;}
-.as-table tbody td:first-child,.as-table tbody td:last-child{text-align:left;}
+.as-table tbody td:first-child{text-align:left;}
+.as-table tbody td:last-child{text-align:center;}
+.as-table tbody input[type="checkbox"]{width:16px;height:16px;cursor:pointer;}
+.as-table tbody input[type="checkbox"]:disabled{cursor:not-allowed;opacity:0.4;}
 .as-empty-row td{padding:30px 14px;color:#888;font-size:13.5px;text-align:center;}
 .ft-support{background:var(--blue);color:#fff;text-align:center;font-size:20px;font-weight:700;padding:10px;margin-top:5px;}
 .ft-bottom{background:#fff;padding:12px 16px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;border-top:1px solid #eee;}
@@ -177,14 +183,16 @@ a{text-decoration:none;color:inherit;}
   .as-titlebar{font-size:15px;padding:11px 12px;}
   .as-filters{padding:12px;gap:10px;flex-direction:column;align-items:stretch;}
   .as-field{width:100%;}
-  .as-input,.as-date-wrap input[type="date"],.as-select{width:100% !important;min-width:0;}
+  .as-input,.as-select{width:100% !important;min-width:0;}
   .as-submit-btn{width:100%;}
   .as-tablebar{flex-direction:column;align-items:stretch;padding:12px;}
   .as-show{justify-content:space-between;}
-  .as-show-select-wrap,.as-search-input{flex:1;}
+  .as-show-select-wrap{flex:1;}
+  .as-bettype{justify-content:space-between;}
+  .as-totals{justify-content:space-between;flex-wrap:wrap;}
   .as-search{justify-content:space-between;}
-  .as-search-input{min-width:0;width:100%;}
-  .as-table{min-width:580px;}
+  .as-search-input{min-width:0;width:100%;flex:1;}
+  .as-table{min-width:680px;}
   .as-table thead th,.as-table tbody td{padding:10px 8px;font-size:12px;}
 }
 @media(min-width:701px){
@@ -200,7 +208,6 @@ a{text-decoration:none;color:inherit;}
 </style>
 </head>
 <body>
-
   <div class="sbv-toast" id="sbvToast"><i class="fa-solid fa-circle-check"></i> Update Button Value</div>
 <div class="sbv-overlay" id="sbvOverlay">
   <div class="sbv-box">
@@ -347,32 +354,16 @@ a{text-decoration:none;color:inherit;}
   <div class="content">
     <div class="as-wrap">
       <div class="as-titlebar">
-        <i class="fa-solid fa-file-lines"></i> Account Statement
+        <i class="fa-solid fa-clock-rotate-left"></i> Current Bets
       </div>
       <div class="as-filters">
-        <div class="as-field">
-          <label>From Date</label>
-          <div class="as-date-wrap">
-            <input type="date" id="fromDate">
-          </div>
-        </div>
-        <div class="as-field">
-          <label>To Date</label>
-          <div class="as-date-wrap">
-            <input type="date" id="toDate">
-          </div>
-        </div>
         <div class="as-field">
           <label>Report Type</label>
           <div class="as-select-wrap">
             <select class="as-select" id="reportType">
-              <option value="deposit-withdraw" selected>Deposit/Withdraw Reports</option>
-              <option value="all">All Transactions</option>
-              <option value="bet-placed">Bet Placed</option>
-              <option value="bet-settled">Bet Settled</option>
-              <option value="bonus">Bonus / Promotions</option>
-              <option value="commission">Commission</option>
-              <option value="account-credit-debit">Account Credit/Debit</option>
+              <option value="" selected>Select Report Type</option>
+              <option value="sports">Sports</option>
+              <option value="casino">Casino</option>
             </select>
           </div>
         </div>
@@ -384,12 +375,22 @@ a{text-decoration:none;color:inherit;}
           <div class="as-show-select-wrap">
             <select class="as-show-select" id="showEntries">
               <option value="10" selected>10</option>
-              <option value="25">25</option>
+              <option value="20">20</option>
+              <option value="30">30</option>
+              <option value="40">40</option>
               <option value="50">50</option>
-              <option value="100">100</option>
             </select>
           </div>
           <span>Entries</span>
+        </div>
+        <div class="as-bettype">
+          <label><input type="radio" name="betType" value="all" checked> All</label>
+          <label><input type="radio" name="betType" value="back"> Back</label>
+          <label><input type="radio" name="betType" value="lay"> Lay</label>
+        </div>
+        <div class="as-totals">
+          <span>Total Bets: <b id="totalBets">0</b></span>
+          <span>Total Amount: <b id="totalAmount">0</b></span>
         </div>
         <div class="as-search">
           <span>Search:</span>
@@ -400,12 +401,12 @@ a{text-decoration:none;color:inherit;}
         <table class="as-table">
           <thead>
             <tr>
-              <th>Date</th>
-              <th>Sr no</th>
-              <th>Credit</th>
-              <th>Debit</th>
-              <th>Pts</th>
-              <th>Remark</th>
+              <th>Event Name</th>
+              <th>Nation</th>
+              <th>User Rate</th>
+              <th>Amount</th>
+              <th>Place Date</th>
+              <th><input type="checkbox" id="selectAllBets" disabled></th>
             </tr>
           </thead>
           <tbody id="asTableBody">
@@ -434,18 +435,21 @@ a{text-decoration:none;color:inherit;}
 </div>
 <div class="ft-copy">&copy; Copyright 2026. All Rights Reserved. Powered by ALLPANEL247.</div>
 <script>
-/* Default date range: last 7 days */
+/* User balance check — checkbox enabled only if user has balance */
 (function(){
-  var to=new Date();
-  var from=new Date();
-  from.setDate(to.getDate()-7);
-  function fmt(d){return d.toISOString().split('T')[0];}
-  document.getElementById('fromDate').value=fmt(from);
-  document.getElementById('toDate').value=fmt(to);
+  var userBalance = 1500; /* should come from real balance source */
+  var selectAll = document.getElementById('selectAllBets');
+  if(userBalance > 0){
+    selectAll.disabled = false;
+  } else {
+    selectAll.disabled = true;
+  }
 })();
 
 function submitFilter(){
   document.getElementById('asTableBody').innerHTML='<tr class="as-empty-row"><td colspan="6">No records found</td></tr>';
+  document.getElementById('totalBets').textContent='0';
+  document.getElementById('totalAmount').textContent='0';
 }
 
 function toggleSbGrp(hd){var body=hd.nextElementSibling;var isOpen=!body.classList.contains('collapsed');if(isOpen){body.style.maxHeight=body.scrollHeight+'px';requestAnimationFrame(function(){requestAnimationFrame(function(){body.classList.add('collapsed');body.style.maxHeight='0';});});hd.classList.add('collapsed');}else{body.classList.remove('collapsed');body.style.maxHeight=body.scrollHeight+'px';hd.classList.remove('collapsed');body.addEventListener('transitionend',function h(){body.style.maxHeight='9999px';body.removeEventListener('transitionend',h);});}}
@@ -458,7 +462,6 @@ function toggleSearch(e){if(e)e.stopPropagation();searchOpen=!searchOpen;var inp
 document.addEventListener('click',function(e){var wrap=document.getElementById('searchWrap');if(searchOpen&&!wrap.contains(e.target)){searchOpen=false;document.getElementById('searchInput').classList.remove('open');wrap.classList.remove('open');document.getElementById('searchInput').value='';}});
 document.getElementById('searchInput').addEventListener('click',function(e){e.stopPropagation();});
 
-
 var SBV_DATA={game:[{label:'1k',value:'1000'},{label:'2k',value:'2000'},{label:'5k',value:'5000'},{label:'10k',value:'10000'},{label:'20k',value:'20000'},{label:'25k',value:'25000'},{label:'50k',value:'50000'},{label:'75k',value:'75000'},{label:'90k',value:'90000'},{label:'95k',value:'95000'}],casino:[{label:'25',value:'25'},{label:'50',value:'50'},{label:'100',value:'100'},{label:'200',value:'200'},{label:'500',value:'500'},{label:'1000',value:'1000'}]};
 var sbvCurrentTab='game';
 function renderSBVRows(tab){var r=document.getElementById('sbvRows');r.innerHTML='';SBV_DATA[tab].forEach(function(item,idx){var row=document.createElement('div');row.className='sbv-row';row.innerHTML='<input type="text" data-tab="'+tab+'" data-idx="'+idx+'" data-field="label" value="'+item.label+'"><input type="text" data-tab="'+tab+'" data-idx="'+idx+'" data-field="value" value="'+item.value+'">';r.appendChild(row);});}
@@ -467,6 +470,7 @@ function openSBV(e){if(e){e.preventDefault();e.stopPropagation();}document.getEl
 function closeSBV(){document.getElementById('sbvOverlay').classList.remove('show');}
 document.getElementById('sbvOverlay').addEventListener('click',function(e){if(e.target===this)closeSBV();});
 function updateSBV(){document.querySelectorAll('#sbvRows input').forEach(function(inp){SBV_DATA[inp.getAttribute('data-tab')][parseInt(inp.getAttribute('data-idx'))][inp.getAttribute('data-field')]=inp.value;});var t=document.getElementById('sbvToast');t.classList.add('show');setTimeout(function(){t.classList.remove('show');},2000);}
+
 </script>
 </body>
 </html>
