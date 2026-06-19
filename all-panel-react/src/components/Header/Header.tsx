@@ -199,7 +199,7 @@ const Header: React.FC<HeaderProps> = ({
   const [searchQuery, setSearchQuery] = useState('');
   const [showBalance, setShowBalance] = useState(true);
   const [showExposure, setShowExposure] = useState(true);
-const [_isMobile, setIsMobile] = useState(false);
+
 
   const [showSetBtnValues, setShowSetBtnValues] = useState(false);
   const [activeTab2, setActiveTab2] = useState<'game' | 'casino'>('game');
@@ -212,12 +212,7 @@ const [_isMobile, setIsMobile] = useState(false);
   const searchInputRef = useRef<HTMLInputElement>(null);
   const mobileSearchRef = useRef<HTMLInputElement>(null);
 
-  useEffect(() => {
-    const check = () => setIsMobile(window.innerWidth <= 768);
-    check();
-    window.addEventListener('resize', check);
-    return () => window.removeEventListener('resize', check);
-  }, []);
+ 
 
   useEffect(() => {
     if (showSearch && searchInputRef.current) searchInputRef.current.focus();
