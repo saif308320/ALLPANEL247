@@ -199,7 +199,7 @@ const Header: React.FC<HeaderProps> = ({
   const [searchQuery, setSearchQuery] = useState('');
   const [showBalance, setShowBalance] = useState(true);
   const [showExposure, setShowExposure] = useState(true);
-  const [isMobile, setIsMobile] = useState(false);
+const [_isMobile, setIsMobile] = useState(false);
 
   const [showSetBtnValues, setShowSetBtnValues] = useState(false);
   const [activeTab2, setActiveTab2] = useState<'game' | 'casino'>('game');

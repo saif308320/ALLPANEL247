@@ -73,7 +73,7 @@ const Login: React.FC = () => {
 
           {/* DOWNLOAD APK */}
           <div className="download">
-            <a href="#">
+<a href="/download-apk">
               <span className="android-icon">
                 <span className="android-head">
                   <span className="android-eye android-eye-left"></span>
