@@ -4,6 +4,7 @@ import Header from '../../components/Header/Header';
 import Sidebar from '../../components/Sidebar/Sidebar';
 import Footer from '../../components/Footer/Footer';
 import CasinoPage, { CasinoSection } from '../../components/Sidebar/CasinoPage';
+import MatchDetailPage from '../Home/MatchDetailPage';
 import './Home.css';
 
 const IMG: Record<string, string> = {
@@ -889,13 +890,16 @@ const Home: React.FC = () => {
 const location = useLocation();
 const [activeSection, setActiveSection] = useState<CasinoSection|null>(
   (location.state as any)?.activeSection || null
-);  const [showWelcomePopup, setShowWelcomePopup] = useState(false);
+);
+  const [showWelcomePopup, setShowWelcomePopup] = useState(false);
   const [activeNavPage, setActiveNavPage] = useState<NavPage>('HOME');
   const [activeTab, setActiveTab] = useState('Cricket');
   const [liveData, setLiveData] = useState<Record<string,ExMatch[]>>(()=>JSON.parse(JSON.stringify(MATCH_DATA)));
   const [isMobile, setIsMobile] = useState(false);
   const [activeCasinoTab, setActiveCasinoTab] = useState<string>('baccarat');
   const [activeMobileNav, setActiveMobileNav] = useState<MobileNavKey | null>(null);
+  // ── NEW: active match title for MatchDetailPage ──
+  const [activeMatchTitle, setActiveMatchTitle] = useState<string | null>(null);
   const tabsRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -946,11 +950,13 @@ const [activeSection, setActiveSection] = useState<CasinoSection|null>(
     setActiveNavPage(tab as NavPage);
     setActiveSection(null);
     setActiveMobileNav(null);
+    setActiveMatchTitle(null);
     if (NAV_CASINO_MAP[tab]) setActiveCasinoTab(NAV_CASINO_MAP[tab]);
   };
 
   const handleMobileNavClick = (key: MobileNavKey) => {
     setActiveMobileNav(key);
+    setActiveMatchTitle(null);
     if (key === 'CRASH') { setActiveNavPage('CRASH'); setActiveSection(null); }
     else if (key === 'LOTTERY') { setActiveNavPage('LOTTERY'); setActiveSection(null); }
     else if (key === 'SPORTS') { setActiveNavPage('HOME'); setActiveSection(null); }
@@ -985,14 +991,25 @@ const [activeSection, setActiveSection] = useState<CasinoSection|null>(
       {showWelcomePopup && <WelcomePopup onClose={() => setShowWelcomePopup(false)} />}
       <Header activeTab={activeNavPage} balance={1500} exp={0} username="Demo" onTabChange={handleNavTabChange}/>
       <div className="home-wrap">
-        <Sidebar activeSection={activeSection} onSectionChange={(s) => { setActiveSection(s); setActiveNavPage('HOME'); setActiveMobileNav(null); }}/>
+        <Sidebar activeSection={activeSection} onSectionChange={(s) => { setActiveSection(s); setActiveNavPage('HOME'); setActiveMobileNav(null); setActiveMatchTitle(null); }}/>
         <div className="home-content">
-          {activeNavPage !== 'HOME' ? renderNavContent() : activeSection ? <CasinoPage section={activeSection}/> : (
+          {activeNavPage !== 'HOME' ? renderNavContent() : activeSection ? <CasinoPage section={activeSection}/> : activeMatchTitle ? (
+            // ── MatchDetailPage — tab click se aata hai ──
+            <MatchDetailPage matchTitle={activeMatchTitle} onBack={() => setActiveMatchTitle(null)}/>
+          ) : (
             <div className="home-default">
               {/* Top 5 highlight boxes */}
               <div className="ex-top-strip">
                 {TOP_CARDS.map((card,i) => (
-                  <div key={i} className={`ex-highlight-item${i===0?' active':''}`}>
+                  <div
+                    key={i}
+                    className={`ex-highlight-item${i===0?' active':''}`}
+                    style={{cursor:'pointer'}}
+                    onClick={() => {
+                      setActiveMatchTitle(card.title);
+                      setActiveSection(null);
+                    }}
+                  >
                     <img src={card.icon==='cricket' ? './image/cricket.png' : './image/ball.png'} alt={card.icon} className="ex-hl-icon"/>
                     <span className="ex-hl-txt">{card.title}</span>
                   </div>

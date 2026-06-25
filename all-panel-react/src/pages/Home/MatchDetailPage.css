@@ -1,0 +1,214 @@
+.mdp-wrap{display:flex;min-height:100vh;font-family:'Roboto Condensed',Arial,sans-serif;font-size:12px;background:#ffffff;color:#333;margin-top:5px;align-items:flex-start;}
+.mdp-main-content{flex:1;min-width:0;}
+
+/* RIGHT PANEL - desktop only, sticky scrollable */
+.mdp-right-panel{
+  width:380px;min-width:380px;flex-shrink:0;
+  background:#fff;border-left:1px solid #ddd;
+  position:sticky;top:0;
+  height:100vh;overflow-y:auto;
+  display:flex;flex-direction:column;
+  align-self:flex-start;
+}
+
+.match-header{background:#1a2a3a;color:#fff;padding:7px 12px;display:flex;justify-content:space-between;align-items:center;font-size:15px;font-weight:700;}
+.mkt-title{background:rgb(74, 90, 105);color:#fff;padding:5px 10px;font-size:14px;font-weight:700;margin-top:5px;}
+.mkt-sub{padding:0;background:#fff;border-bottom:1px solid #e0e0e0;display:flex;align-items:stretch;}
+.mkt-sub-left{flex:1;padding:4px 10px;font-size:12px;font-weight:700;color:#097c93;display:flex;align-items:center;background-color:rgb(242,242,242);}
+.mkt-sub-right{display:flex;margin-left:auto;}
+
+.mkt-sub-right > div{
+  width:68px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:12px;font-weight:700;color:#333;
+  min-height:28px;
+  background:#fff;
+}
+
+.col-rname{width:auto;}
+.col-ocell{width:68px;}
+.odds-grid{width:100%;border-collapse:collapse;background:#fff;table-layout:fixed;}
+.odds-grid td{border:1px solid #ddd;}
+.odds-runner{padding:5px 10px;font-size:14px;background:rgb(242,242,242);font-weight:700;vertical-align:middle;}
+.bk1,.bk2,.bk3,.ly1,.ly2,.ly3{width:68px;text-align:center;cursor:pointer;vertical-align:middle;white-space:nowrap;padding:3px 2px;}
+.bk1{background:#d6eaf8;}.bk2{background:#aed6f1;}.bk3{background:rgb(114,187,239);}
+.ly1{background:rgb(250,169,186);}.ly2{background:#f5c6ce;}.ly3{background:#fce4e8;}
+.bk1:hover,.bk2:hover,.bk3:hover,.ly1:hover,.ly2:hover,.ly3:hover{filter:brightness(0.92);}
+.odd-val{font-size:15px;font-weight:700;display:block;line-height:1.3;color:#333;}
+.odd-vol{font-size:10px;color:#555;display:block;line-height:1.2;}
+.empty-cell{background:rgb(246,205,214)!important;text-align:center;color:#000;font-size:20px;cursor:default;}
+.susp{background:#404b53;color:#ff0008;font-weight:700;font-size:16px;text-align:center;padding:10px!important;letter-spacing:1px;}
+.bm-row{display:flex;flex-wrap:wrap;gap:0;background:#fff;}
+.bm-box{background:#fff;flex:1;min-width:220px;border:1px solid #ddd;}
+.bm-mkt-sub{font-size:12px;font-weight:400;color:#097c93;background:rgb(242,242,242);border-bottom:1px solid #e0e0e0;display:flex;align-items:center;justify-content:space-between;}
+.bm-mkt-sub-right{display:flex;}
+.bm-mkt-sub-back{background:rgb(114,187,239);padding:7px 20px;font-size:15px;font-weight:700;color:#333;}
+.bm-mkt-sub-lay{background:rgb(250,169,186);padding:7px 20px;font-size:15px;font-weight:700;color:#333;}
+.bm-table{width:100%;border-collapse:collapse;table-layout:fixed;}
+.bm-table td{border:1px solid #ddd;padding:0;}
+.bm-runner{padding:6px 10px;font-size:13px;vertical-align:middle;background:rgb(242,242,242);font-weight:700;width:auto;}
+.bm-b,.bm-l{width:80px;text-align:center;cursor:pointer;vertical-align:middle;padding:4px 4px;}
+.bm-b{background:rgb(114,187,239);}.bm-l{background:rgb(250,169,186);}
+.bm-b:hover,.bm-l:hover{filter:brightness(0.92);}
+.bm-b b,.bm-l b{font-size:17px;font-weight:700;display:block;color:#333;line-height:1.2;}
+.bm-b small,.bm-l small{font-size:10px;color:#444;display:block;line-height:1.2;}
+.bm-dash{background:#fce4e8;text-align:center;padding:5px;font-size:12px;color:#ccc;width:80px;}
+.marquee-wrap{overflow:hidden;background:#fff;border-top:1px solid #eee;}
+.marquee-inner{display:inline-block;white-space:nowrap;animation:marquee 20s linear infinite;color:#1a9cc7;font-size:10px;padding:3px 0;}
+@keyframes marquee{0%{transform:translateX(100%)}100%{transform:translateX(-100%)}}
+.nm-wrap{background:#fff;border-bottom:1px solid #ddd;}
+.nm-inner{display:flex;flex-wrap:wrap;}
+.nm-half{flex:1;min-width:300px;display:flex;align-items:center;padding:6px 10px;gap:10px;border-right:1px solid #eee;border-bottom:1px solid #eee;}
+.nm-label{flex:1;font-size:13px;font-weight:700;}
+.nm-cols-wrap{display:flex;flex-direction:column;align-items:center;}
+.nm-col-labels{display:flex;gap:0;margin-bottom:2px;}
+.nm-col-lbl{font-size:11px;font-weight:700;text-align:center;width:58px;}
+.nm-cells{display:flex;gap:0;}
+.nm-no{background:rgb(250,169,186);text-align:center;cursor:pointer;padding:5px 4px;font-size:13px;font-weight:700;width:58px;border:1px solid #ddd;}
+.nm-yes{background:rgb(114,187,239);text-align:center;cursor:pointer;padding:5px 4px;font-size:13px;font-weight:700;width:58px;border:1px solid #ddd;}
+.nm-val-big{font-size:15px;font-weight:700;display:block;line-height:1.3;color:#333;}
+.nm-val-small{font-size:10px;color:#555;display:block;}
+.nm-info{font-size:10px;color:#1a9cc7;white-space:nowrap;line-height:1.5;}
+.nm-note{font-size:10px;color:#888;font-style:italic;padding:2px 10px 4px;}
+
+/* RIGHT PANEL INNER */
+.rp-matka{padding:8px 10px;font-size:14px;font-weight:400;border-bottom:1px solid #eee;display:flex;align-items:center;gap:6px;}
+.rp-matka-icon{width:22px;height:22px;border-radius:50%;background:#1a2a3a;color:#fff;font-size:15px;font-weight:700;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0;}
+.rp-matka a{color:#e6a817;font-weight:400;text-decoration:underline;font-size:18px;}
+.rp-section{background:#1a2a3a;color:#fff;padding:7px 10px;font-size:14px;font-weight:700;}
+.rp-mybet-cols{display:flex;justify-content:space-between;padding:6px 10px;font-size:11px;color:#555;}
+
+/* BET SLIP */
+.bs-header{background:#ccc;display:flex;padding:5px 8px;font-size:13px;font-weight:700;border-bottom:1px solid #bbb;}
+.bs-header .bh-sel{flex:1;}.bs-header .bh-col{min-width:60px;text-align:center;}.bs-header .bh-profit{min-width:45px;text-align:right;}
+.bs-row{display:flex;align-items:center;padding:6px 8px;gap:4px;}
+.bs-sel-name{flex:1;font-size:13px;font-weight:700;}
+.bs-odds-wrap{display:flex;align-items:center;}
+.bs-odds-wrap input{width:54px;border:none;padding:5px;font-size:14px;font-weight:700;text-align:center;outline:none;background:white;}
+.bs-arrows{display:flex;flex-direction:column;background:#d0d0d0;border-left:1px solid #aaa;}
+.bs-arrows button{border:none;background:none;cursor:pointer;font-size:9px;padding:2px 5px;line-height:1;}
+.bs-stake{width:64px;border:none;padding:5px;font-size:14px;font-weight:700;text-align:center;outline:none;background:white;}
+.bs-profit{min-width:32px;text-align:right;font-size:14px;font-weight:700;}
+.bs-btns{display:flex;flex-wrap:wrap;gap:3px;padding:5px 8px;}
+.bs-btn{background:#ccc;padding:4px 6px;font-size:13px;font-weight:700;cursor:pointer;flex:1;min-width:50px;border:none;}
+.bs-btn:hover{background:#bbb;}
+.bs-actions{display:flex;align-items:center;gap:4px;padding:5px 8px 8px;}
+.btn-clear{background:none;border:none;color:rgb(0, 99, 219);cursor:pointer;font-size:14px;padding:5px 6px; text-decoration: underline;}
+.btn-edit{background:rgb(45, 131, 153);color:#fff;border:none;padding:10px 10px;cursor:pointer;font-size:16px;flex:1;}
+.btn-reset{background:rgb(196, 63, 78);color:#fff;border:none;padding:10px 10px;cursor:pointer;font-size:16px;flex:1;}
+.btn-submit{background:rgb(104, 147, 120);color:#fff;border:none;padding:10px 10px;cursor:pointer;font-size:16px;flex:1;}
+
+/* ===== MOBILE ===== */
+@media(max-width:900px){
+  .mdp-right-panel{display:none !important;}
+  .mdp-main-content{padding-bottom:0;padding-right:0;}
+
+  /* Mobile top bar - Matka: HIDDEN on mobile */
+  .mobile-top-bar{display:none !important;}
+
+  /* Mobile match bar: left=team name, right=date — like reference */
+  .mobile-match-bar{
+    background:#1a2a3a;color:#fff;
+    padding:8px 12px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:8px;
+  }
+  .mobile-match-bar .team-name{
+    font-size:14px;font-weight:700;
+    text-transform:uppercase;
+    flex:1;
+  }
+  .mobile-match-bar .match-date{
+    font-size:12px;color:#cce6ff;
+    white-space:nowrap;
+    text-align:right;
+  }
+
+  /* Mobile tabs row */
+  .mobile-tabs{
+    display:flex;background:rgb(0,136,204);
+    border-top:1px solid rgba(255,255,255,0.2);
+  }
+  .mobile-tab{
+    flex:1;text-align:center;padding:9px 4px;
+    font-size:13px;font-weight:700;color:rgba(255,255,255,0.7);
+    cursor:pointer;border-bottom:3px solid transparent;
+    display:flex;align-items:center;justify-content:center;gap:5px;
+  }
+  .mobile-tab.active{color:#fff;border-bottom:3px solid #fff;background:rgba(255,255,255,0.1);}
+  .mobile-mybet-header{
+    display:flex;justify-content:space-between;
+    padding:8px 10px;font-size:12px;font-weight:700;color:#333;
+    border-bottom:1px solid #ddd;
+  }
+  .match-header{display:none;}
+
+  /* Mobile table adjustments */
+  .bk1,.bk2,.bk3,.ly1,.ly2,.ly3{width:52px;padding:3px 2px;}
+  .odd-val{font-size:13px;}
+  .odd-vol{font-size:9px;}
+  .odds-runner{font-size:12px;padding:4px 6px;min-width:80px;max-width:110px;}
+  .col-ocell{width:52px;}
+  .mkt-sub-right > div{width:52px;font-size:11px;}
+  .odds-grid{min-width:420px;width:100%;}
+  .mkt-sub{overflow-x:auto;}
+
+  /* Mobile bet popup - from TOP */
+  .mobile-bet-overlay{
+    position:fixed;top:0;left:0;width:100%;height:100%;
+    z-index:1000;background:rgba(0,0,0,0.4);
+  }
+  .mobile-bet-box{
+    position:absolute;top:0;left:0;width:100%;
+    border-radius:0 0 8px 8px;overflow:hidden;
+  }
+  .mob-bet-header{
+    display:flex;align-items:center;justify-content:space-between;
+    padding:10px 14px;font-size:15px;font-weight:700;
+  }
+  .mob-bet-sel{font-size:14px;font-weight:700;}
+  .mob-bet-close{background:none;border:none;font-size:22px;cursor:pointer;color:#333;line-height:1;padding:0;}
+  .mob-bet-profit{font-size:13px;color:#333;}
+  .mob-bet-fields{display:flex;gap:0;padding:8px 14px;}
+  .mob-bet-field{flex:1;display:flex;flex-direction:column;gap:4px;}
+  .mob-bet-field label{font-size:11px;color:#555;font-weight:700;}
+  .mob-bet-amount-wrap{display:flex;align-items:center;border:1px solid #aaa;background:#fff;border-radius:2px;overflow:hidden;}
+  .mob-bet-amount-wrap input{flex:1;border:none;padding:8px 6px;font-size:15px;font-weight:700;outline:none;background:transparent;min-width:0;}
+  .mob-odds-wrap{display:flex;align-items:center;border:1px solid #aaa;background:#fff;border-radius:2px;overflow:hidden;}
+  .mob-odds-btn{background:#e0e0e0;border:none;padding:8px 12px;font-size:18px;font-weight:700;cursor:pointer;line-height:1;}
+  .mob-odds-wrap input{width:60px;border:none;padding:8px 4px;font-size:15px;font-weight:700;text-align:center;outline:none;background:transparent;}
+  .mob-bet-quickbtns{display:flex;flex-wrap:wrap;gap:4px;padding:6px 14px 8px;}
+  .mob-bet-qbtn{flex:1;min-width:60px;background:#2a3a4a;color:#fff;border:none;padding:8px 4px;font-size:13px;font-weight:700;border-radius:3px;cursor:pointer;text-align:center;}
+  .mob-bet-actions{display:flex;gap:6px;padding:6px 14px 14px;}
+  .mob-btn-clear{background:none;border:none;color:#1a9cc7;cursor:pointer;font-size:14px;padding:8px 6px;}
+  .mob-btn-edit{flex:1;background:#17a2b8;color:#fff;border:none;padding:9px;font-size:14px;font-weight:700;border-radius:3px;cursor:pointer;}
+  .mob-btn-reset{flex:1;background:#dc3545;color:#fff;border:none;padding:9px;font-size:14px;font-weight:700;border-radius:3px;cursor:pointer;}
+  .mob-btn-submit{flex:1.5;background:#28a745;color:#fff;border:none;padding:9px;font-size:14px;font-weight:700;border-radius:3px;cursor:pointer;}
+  .mob-mybet-section{border-top:1px solid #ddd;padding:6px 14px;}
+  .mob-mybet-cols{display:flex;justify-content:space-between;font-size:11px;color:#666;}
+}
+
+@media(min-width:901px){
+  /* Desktop: show Matka in top bar */
+  .mobile-top-bar{
+    display:flex !important;align-items:center;
+    background:#fff;padding:6px 10px;border-bottom:1px solid #ddd;
+  }
+  .mobile-top-bar .matka-link{
+    font-size:15px;font-weight:700;color:#e6a817;
+    text-decoration:none;display:flex;align-items:center;gap:6px;
+  }
+  .mobile-top-bar .matka-link .info-icon{
+    width:18px;height:18px;border-radius:50%;
+    background:#1a2a3a;color:#fff;font-size:11px;
+    display:inline-flex;align-items:center;justify-content:center;
+    font-weight:700;font-style:italic;flex-shrink:0;
+  }
+  .mobile-match-bar{display:none !important;}
+  .mobile-tabs{display:none !important;}
+  .mobile-mybet-content-wrap{display:none !important;}
+  .mobile-bet-overlay{display:none !important;}
+  .mdp-main-content{padding-right:0;}
+}
