@@ -632,7 +632,7 @@ const MatchDetailPage: React.FC<Props> = ({ matchTitle }) => {
       <div className="mdp-right-panel">
         <div className="rp-matka">
           <span className="rp-matka-icon">i</span>
-          <a href="#">Matka</a>
+<span>Matka</span>
         </div>
         {DesktopBetSlip}
         <div className="rp-section">My Bet</div>
