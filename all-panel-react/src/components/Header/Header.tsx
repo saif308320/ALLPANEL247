@@ -233,6 +233,12 @@ const Header: React.FC<HeaderProps> = ({
     return () => document.removeEventListener('mousedown', handleClick);
   }, []);
 
+  useEffect(() => {
+    const handler = () => setShowSetBtnValues(true);
+    window.addEventListener('openSetBtnValues', handler);
+    return () => window.removeEventListener('openSetBtnValues', handler);
+  }, []);
+
   const handleDemoItem = (item: any) => {
     if (item.action === 'rules') { setShowDemo(false); setShowRules(true); return; }
     if (item.action === 'balance') { setShowBalance(p => !p); return; }

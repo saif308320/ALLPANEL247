@@ -1,0 +1,223 @@
+/* ── PAGE ── */
+.bc-page-wrap{background:#fff;min-height:100vh;font-family:'Roboto Condensed',sans-serif;font-size:11px;color:#000;margin-top:5px;}
+
+/* ── GAME BAR ── */
+.bc-game-bar{background:#2C3E50;color:#fff;padding:6px 10px;display:flex;justify-content:space-between;align-items:center;font-weight:bold;}
+.bc-game-title{font-size:16px;font-weight:bold;}
+.bc-rules-lnk{font-size:12px;font-weight:normal;text-decoration:underline;color:#fff;margin-left:6px;cursor:pointer;}
+.bc-round-id{font-size:11px;color:#EAEDED;}
+
+/* ── MOBILE TABS ── */
+.bc-mob-tabs{display:none;background:#0088cc;align-items:center;}
+.bc-mob-tab{background:none;border:none;color:#fff;padding:9px 14px;font-size:13px;font-weight:700;cursor:pointer;border-bottom:3px solid transparent;white-space:nowrap;}
+.bc-mob-tab.active{border-bottom:3px solid #fff;background:rgba(0,0,0,0.15);}
+.bc-mob-roundid{margin-left:auto;font-size:10px;color:#e0f0ff;padding-right:10px;white-space:nowrap;}
+
+/* ── LAYOUT ── */
+.bc-main-layout{display:flex;gap:4px;align-items:flex-start;padding:4px;}
+.bc-center-col{flex:1;display:flex;flex-direction:column;gap:4px;min-width:0;}
+.bc-hidden{display:none!important;}
+
+/* ── VIDEO FRAME ── */
+.bc-stream-frame{width:100%;aspect-ratio:16/8;background:#000;position:relative;border:1px solid #000;}
+
+/* ── RESULT OVERLAY ── */
+.bc-result-overlay{position:absolute;inset:0;background:rgba(0,0,0,0.93);display:flex;align-items:center;justify-content:center;z-index:50;}
+.bc-result-banner{background:#fff;color:#000;font-weight:900;padding:10px 28px;border:3px solid #000;font-size:18px;animation:bc-pop .3s ease;}
+@keyframes bc-pop{from{transform:scale(.7);opacity:0}to{transform:scale(1);opacity:1}}
+
+/* ── CLOCK ── */
+.bc-clock-wrap{position:absolute;bottom:10px;right:12px;display:flex;gap:4px;z-index:20;}
+.bc-flip-box{width:36px;height:52px;background:#1C2833;color:#fff;font-size:32px;font-weight:bold;font-family:'Courier New',monospace;display:flex;align-items:center;justify-content:center;border:1px solid #111;border-radius:4px;}
+.bc-flip-orange{color:#F1C40F!important;}
+
+/* ── STATS + SIDEBETS ── */
+.bc-stats-sidebets{display:flex;background:#f0f0f0;border:1px solid #ddd;}
+
+/* STATISTICS */
+.bc-statistics{width:180px;min-width:180px;padding:10px;border-right:1px solid #ddd;background:#fafafa;display:flex;flex-direction:column;}
+.bc-stat-title{font-size:14px;font-weight:700;margin-bottom:6px;color:#333;}
+.bc-stat-wrap{display:flex;align-items:center;gap:10px;}
+.bc-stat-legend{font-size:11px;display:flex;flex-direction:column;gap:5px;}
+.bc-stat-legend div{display:flex;align-items:center;gap:5px;font-weight:600;}
+.bc-dot{width:12px;height:12px;border-radius:50%;display:inline-block;flex-shrink:0;}
+
+/* SIDEBETS */
+.bc-sidebets-col{flex:1;display:flex;flex-direction:column;gap:4px;padding:6px;margin-top:25px;}
+.bc-sidebets-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:4px;}
+.bc-sidebet-btn{background:#3a4a5a;color:#fff;border:none;cursor:pointer;padding:10px 6px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;min-height:58px;transition:background .15s;}
+.bc-sidebet-btn:hover:not(.bc-locked){background:rgb(53,55,58);}
+.bc-sidebet-btn.bc-locked{background:rgb(53,55,58)!important;cursor:not-allowed;}
+.bc-sb-name{font-size:11px;font-weight:700;text-align:center;}
+.bc-sb-odds{font-size:13px;font-weight:700;color:#FFD700;}
+.bc-sb-lock{margin:2px 0;}
+
+/* MAIN BETS */
+.bc-main-bets{display:flex;gap:2px;height:82px;}
+.bc-main-btn{flex:1;border:none;cursor:pointer;padding:6px 4px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;color:#fff;transition:filter .15s;}
+.bc-main-btn:hover:not(.bc-locked){filter:brightness(1.15);}
+.bc-main-btn.bc-locked{background:rgb(86,72,75)!important;cursor:not-allowed;}
+.bc-pill-left{border-radius:40px 0 0 40px;}
+.bc-pill-right{border-radius:0 40px 40px 0;}
+.bc-mb-name{font-size:12px;font-weight:700;text-align:center;line-height:1.2;}
+.bc-mb-odds{font-size:12px;font-weight:700;color:#FFD700;}
+.bc-mb-cards{display:flex;gap:2px;}
+.bc-mb-lock{margin:2px 0;}
+.bc-card{width:20px;height:28px;background:#fff;border:1px solid #999;border-radius:2px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px;}
+
+/* LAST RESULT */
+.bc-result-bar{background:#34495E;color:#fff;padding:8px 10px;display:flex;justify-content:space-between;font-weight:400;font-size:14px;}
+.bc-view-all{text-decoration:underline;font-weight:normal;cursor:pointer;color:#BDC3C7;}
+.bc-result-circles{background:#fff;padding:6px;display:flex;flex-wrap:wrap;gap:5px;justify-content:end;}
+.bc-result-badge{width:28px;height:28px;border-radius:50%;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:12px;}
+.bc-badge-p{background:#2980b9;}
+.bc-badge-b{background:#c0392b;}
+.bc-badge-t{background:#27ae60;}
+
+/* ── RIGHT PANEL — desktop >1200px only ── */
+.bc-right-panel{width:380px;min-width:380px;flex-shrink:0;background:#fff;position:sticky;top:0;height:100vh;overflow-y:auto;display:flex;flex-direction:column;align-self:flex-start;border-left:1px solid #e0e0e0;}
+.bc-mybet-hdr{background:#1a2a3a;color:#fff;padding:7px 10px;font-weight:bold;text-transform:uppercase;font-size:14px;}
+.bc-mybet-cols{display:flex;justify-content:space-between;padding:6px 10px;font-size:11px;color:#555;}
+.bc-mybet-list{min-height:120px;overflow-y:auto;}
+.bc-mybet-empty{text-align:center;color:#95A5A6;padding:30px 10px;font-style:italic;font-size:11px;}
+.bc-bet-row{display:grid;grid-template-columns:1.5fr 1fr 1fr;padding:5px 8px;border-bottom:1px solid #E5E7E9;font-size:11px;font-weight:bold;text-align:center;}
+.bc-bet-name{text-align:left;color:#1F618D;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.bc-bet-odds{color:#2C3E50;}
+.bc-bet-stake{text-align:right;color:#196F3D;}
+
+/* BET SLIP */
+.bc-rp-section{background:#1a2a3a;color:#fff;padding:7px 10px;font-size:14px;font-weight:700;}
+.bc-bs-header{background:#ccc;display:flex;padding:5px 8px;font-size:13px;font-weight:700;border-bottom:1px solid #bbb;}
+.bc-bh-sel{flex:1;}
+.bc-bh-col{min-width:60px;text-align:center;}
+.bc-bh-profit{min-width:45px;text-align:right;}
+.bc-bs-body{padding:4px;}
+.bc-bs-row{display:flex;align-items:center;padding:6px 8px;gap:4px;}
+.bc-bs-sel-name{flex:1;font-size:13px;font-weight:700;}
+.bc-bs-odds-disp{min-width:54px;text-align:center;font-size:14px;font-weight:700;background:#fff;padding:5px;}
+.bc-bs-stake{width:64px;border:none;padding:5px;font-size:14px;font-weight:700;text-align:center;outline:none;background:#fff;}
+.bc-bs-profit{min-width:32px;text-align:right;font-size:14px;font-weight:700;}
+.bc-bs-btns{display:flex;flex-wrap:wrap;gap:3px;padding:5px 8px;}
+.bc-bs-btn{background:#ccc;padding:4px 6px;font-size:13px;font-weight:700;cursor:pointer;flex:1;min-width:50px;border:none;}
+.bc-bs-btn:hover{background:#bbb;}
+.bc-bs-actions{display:flex;align-items:center;gap:4px;padding:5px 8px 8px;}
+.bc-btn-clear{background:none;border:none;color:rgb(0,99,219);cursor:pointer;font-size:14px;padding:5px 6px;text-decoration:underline;}
+.bc-btn-edit{background:rgb(45,131,153);color:#fff;border:none;padding:10px;cursor:pointer;font-size:16px;flex:1;}
+.bc-btn-reset{background:rgb(196,63,78);color:#fff;border:none;padding:10px;cursor:pointer;font-size:16px;flex:1;}
+.bc-btn-submit{background:rgb(104,147,120);color:#fff;border:none;padding:10px;cursor:pointer;font-size:16px;flex:1;}
+
+/* ── RULES MODAL ── */
+.bc-modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.65);z-index:9999;display:flex;align-items:center;justify-content:center;}
+.bc-modal-box{background:#fff;width:100%;max-width:800px;max-height:96vh;overflow:hidden;display:flex;flex-direction:column;}
+.bc-modal-hdr{background:#0088cc;color:#fff;padding:14px 20px;display:flex;justify-content:space-between;align-items:center;font-size:18px;font-weight:700;flex-shrink:0;}
+.bc-modal-hdr button{background:none;border:none;color:#fff;font-size:24px;cursor:pointer;line-height:1;padding:0;}
+.bc-modal-body{overflow-y:auto;flex:1;}
+
+/* ══ MOBILE BET POPUP — top se slide ══ */
+.bc-mob-overlay{position:fixed;top:0;left:0;width:100%;height:100%;z-index:9998;background:rgba(0,0,0,0.5);}
+.bc-mob-betbox{
+  position:absolute;top:0;left:0;right:0;
+  width:100%;max-width:100%;
+  border-radius:0 0 10px 10px;overflow:hidden;
+  background:#fff;box-shadow:0 4px 24px rgba(0,0,0,0.35);
+}
+.bc-mob-hdr{background:#0088cc;color:#fff;display:flex;align-items:center;justify-content:space-between;padding:12px 16px;}
+.bc-mob-sel{font-size:15px;font-weight:700;flex:1;line-height:1.3;}
+.bc-mob-profit{font-size:14px;margin:0 12px;white-space:nowrap;}
+.bc-mob-close{background:rgba(255,255,255,0.2);border:none;font-size:20px;cursor:pointer;color:#fff;line-height:1;padding:4px 8px;border-radius:4px;}
+.bc-mob-body{padding:0 0 4px;}
+.bc-mob-fields{display:flex;gap:12px;padding:10px 16px 6px;}
+.bc-mob-field{flex:1;display:flex;flex-direction:column;gap:5px;}
+.bc-mob-field label{font-size:12px;color:#555;font-weight:700;text-transform:uppercase;}
+.bc-mob-field input{border:1px solid #aaa;padding:10px 8px;font-size:16px;font-weight:700;outline:none;border-radius:4px;width:100%;box-sizing:border-box;background:#fff;}
+.bc-mob-odds-val{border:1px solid #aaa;padding:10px 8px;font-size:16px;font-weight:700;border-radius:4px;background:#f5f5f5;color:#333;}
+.bc-mob-chips{display:flex;flex-wrap:wrap;gap:5px;padding:8px 16px 10px;}
+.bc-mob-chips button{flex:1;min-width:55px;background:#2a3a4a;color:#fff;border:none;padding:9px 4px;font-size:13px;font-weight:700;border-radius:4px;cursor:pointer;}
+.bc-mob-chips button:hover{background:#3a4a5a;}
+.bc-mob-actions{display:flex;gap:8px;padding:8px 16px 16px;align-items:center;}
+.bc-mob-clear{background:none;border:none;color:rgb(0,99,219);cursor:pointer;font-size:14px;padding:10px 8px;text-decoration:underline;white-space:nowrap;}
+.bc-mob-edit{flex:1;background:rgb(45,131,153);color:#fff;border:none;padding:11px;font-size:15px;font-weight:700;border-radius:4px;cursor:pointer;}
+.bc-mob-reset{flex:1;background:rgb(196,63,78);color:#fff;border:none;padding:11px;font-size:15px;font-weight:700;border-radius:4px;cursor:pointer;}
+.bc-mob-submit{flex:1.5;background:rgb(104,147,120);color:#fff;border:none;padding:11px;font-size:15px;font-weight:700;border-radius:4px;cursor:pointer;}
+.bc-mob-betlist{flex:1;padding:0;}
+
+/* ══════════════════════════════
+   TABLET — 701px to 1200px
+══════════════════════════════ */
+@media(min-width:701px) and (max-width:1200px){
+  .bc-right-panel{display:none!important;}
+  .bc-main-layout{padding:0;flex-direction:column;}
+  .bc-center-col{gap:4px;width:100%;}
+  .bc-stream-frame{aspect-ratio:16/9;}
+
+  /* mob tabs show */
+  .bc-mob-tabs{display:flex;}
+  .bc-game-bar{display:none;}
+
+  /* stats row */
+  .bc-stats-sidebets{flex-direction:row;}
+  .bc-statistics{width:160px;min-width:160px;}
+
+  /* sidebets 4 col */
+  .bc-sidebets-grid{grid-template-columns:repeat(4,1fr);}
+  .bc-main-bets{height:76px;}
+  .bc-mb-name{font-size:11px;}
+
+  /* popup tablet centered */
+  .bc-mob-betbox{
+    max-width:540px;
+    left:50%;right:auto;
+    transform:translateX(-50%);
+    border-radius:0 0 12px 12px;
+  }
+  .bc-mob-chips button{font-size:14px;padding:10px 6px;min-width:62px;}
+  .bc-mob-hdr{padding:14px 18px;font-size:17px;}
+  .bc-mob-fields{padding:12px 18px;}
+  .bc-mob-field input{font-size:17px;padding:11px 10px;}
+  .bc-mob-actions{padding:10px 18px 18px;}
+  .bc-mob-edit,.bc-mob-reset,.bc-mob-submit{padding:12px;font-size:16px;}
+
+  .bc-modal-box{width:100%;max-width:100%;max-height:100vh;border-radius:0;}
+}
+
+/* ══════════════════════════════
+   MOBILE — max 700px
+══════════════════════════════ */
+@media(max-width:700px){
+  .bc-right-panel{display:none!important;}
+  .bc-main-layout{padding:0;flex-direction:column;}
+  .bc-center-col{gap:0;width:100%;}
+  .bc-stream-frame{aspect-ratio:16/9;}
+
+  /* mob tabs show, game bar hide */
+  .bc-mob-tabs{display:flex;}
+  .bc-game-bar{display:none;}
+
+  /* stats full width */
+  .bc-stats-sidebets{flex-direction:column;}
+  .bc-statistics{width:100%;min-width:unset;border-right:none;border-bottom:1px solid #ddd;align-items:center;padding:14px 10px;}
+  .bc-stat-title{text-align:center;font-size:15px;margin-bottom:10px;}
+  .bc-stat-wrap{justify-content:center;gap:20px;}
+  .bc-stat-legend{font-size:12px;gap:7px;}
+  .bc-dot{width:13px;height:13px;}
+
+  /* sidebets 4 col */
+  .bc-sidebets-grid{grid-template-columns:repeat(4,1fr);}
+  .bc-main-bets{height:72px;margin-top:25px;margin-bottom:25px;}
+  .bc-mb-name{font-size:11px;}
+  .bc-mb-odds{font-size:11px;}
+
+  /* popup full width */
+  .bc-mob-betbox{max-width:100%;left:0;right:0;transform:none;}
+  .bc-mob-chips button{font-size:11px;padding:7px 2px;min-width:46px;}
+  .bc-mob-actions{flex-wrap:wrap;}
+  .bc-mob-edit,.bc-mob-reset,.bc-mob-submit{font-size:13px;padding:9px;}
+
+  .bc-modal-box{width:100%;max-width:100%;max-height:100vh;border-radius:0;}
+}
+
+@media(max-width:500px){
+  .bc-sidebets-grid{grid-template-columns:repeat(4,1fr);}
+  .bc-main-bets{height:70px;margin-top:25px;margin-bottom:25px;}
+  .bc-mb-name{font-size:8px;}
+}

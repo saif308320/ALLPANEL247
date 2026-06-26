@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './CasinoPage.css';
 
 const IMG: Record<string, string> = {
@@ -260,19 +261,24 @@ const ProviderBar: React.FC<{
 };
 
 // Image grid
-const ImageGrid: React.FC<{ items: GameItem[] }> = ({ items }) => (
-  <div className="cp-grid">
-    {items.length === 0
-      ? <div className="cp-no-games">No games found</div>
-      : items.map((item, i) => (
-        <div key={i} className="cp-grid__cell">
-          <img src={item.s} alt={item.l} loading="lazy" />
-          <div className="cp-grid__lbl">{item.l}</div>
-        </div>
-      ))
-    }
-  </div>
-);
+const GAME_ROUTES = ['/game/football','/game/cricket','/game/andar-bahar','/game/baccarat'];
+
+const ImageGrid: React.FC<{ items: GameItem[] }> = ({ items }) => {
+  const navigate = useNavigate();
+  return (
+    <div className="cp-grid">
+      {items.length === 0
+        ? <div className="cp-no-games">No games found</div>
+        : items.map((item, i) => (
+          <div key={i} className="cp-grid__cell" style={{cursor:'pointer'}} onClick={() => navigate(GAME_ROUTES[i % 4])}>
+            <img src={item.s} alt={item.l} loading="lazy" />
+            <div className="cp-grid__lbl">{item.l}</div>
+          </div>
+        ))
+      }
+    </div>
+  );
+};
 
 // ══════════════════════════════════════════════════
 //  PAGE COMPONENTS

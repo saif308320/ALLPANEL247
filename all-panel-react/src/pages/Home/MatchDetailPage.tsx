@@ -170,7 +170,7 @@ const MatchDetailPage: React.FC<Props> = ({ matchTitle }) => {
         </div>
         <div className="bs-actions">
           <button className="btn-clear" onClick={closeBet}>clear</button>
-          <button className="btn-edit">Edit</button>
+<button className="btn-edit" onClick={() => window.dispatchEvent(new CustomEvent('openSetBtnValues'))}>Edit</button>
           <button className="btn-reset" onClick={closeBet}>Reset</button>
           <button className="btn-submit">Submit</button>
         </div>
@@ -213,7 +213,7 @@ const MatchDetailPage: React.FC<Props> = ({ matchTitle }) => {
         </div>
         <div className="mob-bet-actions">
           <button className="mob-btn-clear" onClick={closeBet}>clear</button>
-          <button className="mob-btn-edit">Edit</button>
+<button className="mob-btn-edit" onClick={() => window.dispatchEvent(new CustomEvent('openSetBtnValues'))}>Edit</button>
           <button className="mob-btn-reset" onClick={closeBet}>Reset</button>
           <button className="mob-btn-submit">Place Bet</button>
         </div>

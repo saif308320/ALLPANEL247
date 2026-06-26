@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import Header from '../../components/Header/Header';
 import Sidebar from '../../components/Sidebar/Sidebar';
 import Footer from '../../components/Footer/Footer';
@@ -203,7 +203,10 @@ const WelcomePopup: React.FC<{ onClose: () => void }> = ({ onClose }) => {
 };
 
 // ===================== CASINO IMAGE PAGE =====================
+const CASINO_GAME_ROUTES = ['/game/football','/game/cricket','/game/andar-bahar','/game/baccarat'];
+
 const CasinoNavPage: React.FC<{ tabs: typeof CASINO_NAV_TABS; images: Record<string, {src:string;lbl:string}[]>; defaultTab?: string }> = ({ tabs, images, defaultTab }) => {
+  const navigate = useNavigate();
   const [activeKey, setActiveKey] = useState(defaultTab || tabs[0].key);
   const scrollRef = useRef<HTMLDivElement>(null);
   useEffect(() => { if (defaultTab) setActiveKey(defaultTab); }, [defaultTab]);
@@ -221,7 +224,7 @@ const CasinoNavPage: React.FC<{ tabs: typeof CASINO_NAV_TABS; images: Record<str
       </div>
       <div className="cn-grid">
         {imgs.map((img, i) => (
-          <div key={i} className="cn-item">
+          <div key={i} className="cn-item" style={{cursor:'pointer'}} onClick={() => navigate(CASINO_GAME_ROUTES[i % 4])}>
             <img src={img.src} alt={img.lbl} loading="lazy" onError={(e)=>{(e.target as HTMLImageElement).src=FALLBACK;}}/>
             <div className="cn-lbl">{img.lbl}</div>
           </div>
@@ -887,10 +890,9 @@ const NAV_CASINO_MAP: Record<string, string> = {
 };
 
 const Home: React.FC = () => {
-const location = useLocation();
+const navigate = useNavigate();
 const [activeSection, setActiveSection] = useState<CasinoSection|null>(
-  (location.state as any)?.activeSection || null
-);
+(window.history.state?.usr as any)?.activeSection || null);
   const [showWelcomePopup, setShowWelcomePopup] = useState(false);
   const [activeNavPage, setActiveNavPage] = useState<NavPage>('HOME');
   const [activeTab, setActiveTab] = useState('Cricket');
@@ -1060,14 +1062,17 @@ const [activeSection, setActiveSection] = useState<CasinoSection|null>(
 
               {/* Games Grid */}
               <div className="hm-games-wrap">
-                <div className="hm-games-grid">
-                  {GAMES.map((g,i) => (
-                    <div key={i} className="hm-gc">
-                      <img src={g.img} alt={g.lbl} loading="lazy" onError={(e)=>{(e.target as HTMLImageElement).src=FALLBACK;}}/>
-                      <div className="hm-gc-lbl">{g.lbl}</div>
-                    </div>
-                  ))}
-                </div>
+               <div className="hm-games-grid">
+  {GAMES.map((g,i) => {
+    const routes = ['/game/football','/game/cricket','/game/andar-bahar','/game/baccarat'];
+    return (
+      <div key={i} className="hm-gc" style={{cursor:'pointer'}} onClick={() => navigate(routes[i % 4])}>
+        <img src={g.img} alt={g.lbl} loading="lazy" onError={(e)=>{(e.target as HTMLImageElement).src=FALLBACK;}}/>
+        <div className="hm-gc-lbl">{g.lbl}</div>
+      </div>
+    );
+  })}
+</div>
               </div>
             </div>
           )}

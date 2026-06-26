@@ -1,0 +1,283 @@
+/* ── PAGE WRAPPER ── */
+.fg-page-wrap{background-color:#ffffff;min-height:100vh;font-family:Roboto Condensed,sans-serif;font-size:11px;color:#000;margin-top:5px;}
+
+/* ── GAME HEADER BAR ── */
+.fg-game-bar{background-color:#2C3E50;color:#fff;padding:6px 10px;display:flex;justify-content:space-between;align-items:center;font-weight:bold;}
+.fg-game-title{font-size:16px;font-weight:bold;}
+.fg-rules-lnk{font-size:12px;font-weight:normal;text-decoration:underline;color:#ffffff;margin-left:6px;cursor:pointer;}
+.fg-rules-lnk:hover{color:#fff;}
+.fg-round-id{font-size:11px;font-weight:normal;color:#EAEDED;}
+
+/* ── MAIN LAYOUT ── */
+.fg-main-layout{display:flex;gap:4px;align-items:flex-start;margin-top:5px;}
+.fg-center-col{flex:1;display:flex;flex-direction:column;gap:4px;min-width:0;}
+
+/* ── STREAM FRAME ── */
+.fg-stream-frame{width:100%;aspect-ratio:16/8;background-color:#000;position:relative;border:1px solid #000;}
+
+/* ── RESULT OVERLAY ── */
+.fg-result-overlay{position:absolute;inset:0;background-color:rgba(0,0,0,0.93);display:flex;flex-direction:column;align-items:center;justify-content:center;z-index:50;}
+.fg-result-banner{background-color:#fff;color:#000;font-weight:900;padding:8px 20px;border:3px solid #000;font-size:14px;text-align:center;animation:fg-pop 0.3s ease;}
+@keyframes fg-pop{from{transform:scale(0.7);opacity:0}to{transform:scale(1);opacity:1}}
+
+/* ── FLIP CLOCK ── */
+.fg-clock-wrap{position:absolute;bottom:10px;right:12px;display:flex;gap:4px;z-index:20;}
+.fg-flip-box{width:36px;height:52px;background-color:#1C2833;color:#fff;font-size:32px;font-weight:bold;font-family:'Courier New',Courier,monospace;display:flex;align-items:center;justify-content:center;border:1px solid #111;border-radius:4px;transition:color 0.3s;}
+.fg-flip-orange{color:#F1C40F !important;}
+
+/* ── MARKETS GRID ── */
+.fg-markets-grid{display:grid;grid-template-columns:1fr 1fr;gap:4px;}
+.fg-combo-full{grid-column:span 2;}
+
+/* ── MARKET CARD ── */
+.fg-market-card{background-color:#fff;border:1px solid #b2babb24;overflow-x:auto;}
+.fg-market-hdr{background-color:#4a5a69;color:#fff;padding:6px 8px;font-weight:bold;text-transform:uppercase;font-size:14px;}
+
+/* ── TABLE ── */
+.fg-table{width:100%;border-collapse:collapse;font-size:11px;}
+.fg-table th{background-color:#EAEAEA;font-weight:bold;padding:6px;border-bottom:1px solid #BDC3C7;text-align:center;font-size:16px;}
+.fg-th-left{text-align:left !important;padding-left:8px !important;}
+.fg-th-back{background-color:#72BBEF !important;color:#1a5276;width:65px;}
+.fg-th-lay{background-color:#FAA9BA !important;color:#78281F;width:65px;}
+.fg-th-limit{font-size:9px !important;color:#7F8C8D;font-weight:normal !important;text-align:right !important;padding-right:6px !important;width:70px;}
+.fg-tr{border-bottom:1px solid #E5E7E9;}
+.fg-runner{font-weight:400;padding:4px 4px 4px 8px;color:#333;font-size:14px;background-color:#f2f2f2;}
+.fg-odds-td{width:80px;}
+
+/* ── ODDS BUTTONS ── */
+.fg-odds-btn{width:100%;height:34px;border:none;cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;line-height:1.1;font-weight:bold;transition:background 0.15s;}
+.fg-back{background-color:#72BBEF;color:#1A5276;}
+.fg-back:hover:not(.fg-locked){background-color:#5aaee0;}
+.fg-lay{background-color:#FAA9BA;color:#78281F;}
+.fg-lay:hover:not(.fg-locked){background-color:#f090a5;}
+.fg-locked{background-color:rgb(86,72,75) !important;color:#90A4AE !important;cursor:not-allowed !important;}
+.fg-lock-icon{font-size:13px;}
+.fg-rate{font-size:16px;font-weight:bold;}
+.fg-vol{font-size:12px;font-weight:normal;color:#333;}
+
+/* ── LIMIT CELL ── */
+.fg-limit-td{font-size:10px;text-align:right;color:#097c93;padding-right:6px;white-space:nowrap;font-weight:700;}
+.fg-max{font-weight:bold;}
+
+/* ── COMBO GRID ── */
+.fg-combo-grid{display:grid;grid-template-columns:1fr 1fr;background-color:#E5E7E9;gap:1px;}
+
+/* ── LAST RESULT ── */
+.fg-result-bar{background-color:#34495E;color:#fff;padding:8px 10px;display:flex;justify-content:space-between;font-weight:400;font-size:14px;}
+.fg-view-all{text-decoration:underline;font-weight:normal;cursor:pointer;color:#BDC3C7;}
+.fg-result-circles{background-color:#fff;padding:6px;display:flex;flex-wrap:wrap;gap:5px;justify-content:flex-end;}
+.fg-result-badge{width:28px;height:28px;border-radius:50%;background-color:#1B5E20;color:#ffff33;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:16px;}
+
+/* ── COMPLIANCE ── */
+.fg-compliance-row{background-color:#F8F9F9;border:1px solid #BDC3C7;padding:10px;display:flex;justify-content:space-between;align-items:center;}
+.fg-secure-wrap{display:flex;align-items:center;gap:8px;}
+.fg-safe-bold{font-weight:bold;font-size:11px;}
+.fg-safe-sub{color:#7F8C8D;font-size:10px;}
+.fg-compliance-right{display:flex;align-items:center;gap:10px;font-weight:bold;color:#566573;font-size:10px;}
+
+/* ══════════════════════════════
+   RIGHT PANEL — desktop only >1200px
+══════════════════════════════ */
+.fg-right-panel{
+  width:380px;min-width:380px;flex-shrink:0;
+  background:#fff;
+  position:sticky;top:0;
+  height:100vh;overflow-y:auto;
+  display:flex;flex-direction:column;
+  align-self:flex-start;
+  border-left:1px solid #e0e0e0;
+}
+
+/* ── MY BET ── */
+.fg-mybet-hdr{background-color:#1a2a3a;color:#fff;padding:7px 10px;font-weight:bold;text-transform:uppercase;font-size:14px;}
+.fg-mybet-cols{display:flex;justify-content:space-between;padding:6px 10px;font-size:11px;color:#555;}
+.fg-mybet-list{min-height:120px;overflow-y:auto;}
+.fg-mybet-empty{text-align:center;color:#95A5A6;padding:30px 10px;font-style:italic;font-size:11px;}
+.fg-bet-row{display:grid;grid-template-columns:1.5fr 1fr 1fr;padding:5px 8px;border-bottom:1px solid #E5E7E9;font-size:11px;font-weight:bold;text-align:center;}
+.fg-bet-name{text-align:left;color:#1F618D;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.fg-bet-odds{color:#2C3E50;}
+.fg-bet-stake{text-align:right;color:#196F3D;}
+
+/* ── DESKTOP BET SLIP ── */
+.fg-rp-section{background:#1a2a3a;color:#fff;padding:7px 10px;font-size:14px;font-weight:700;}
+.fg-bs-header{background:#ccc;display:flex;padding:5px 8px;font-size:13px;font-weight:700;border-bottom:1px solid #bbb;}
+.fg-bh-sel{flex:1;}
+.fg-bh-col{min-width:60px;text-align:center;}
+.fg-bh-profit{min-width:45px;text-align:right;}
+.fg-bs-body-back{background:#d6eaf8;}
+.fg-bs-body-lay{background:rgb(250,169,186);}
+.fg-bs-row{display:flex;align-items:center;padding:6px 8px;gap:4px;}
+.fg-bs-sel-name{flex:1;font-size:13px;font-weight:700;}
+.fg-bs-odds-wrap{display:flex;align-items:center;}
+.fg-bs-odds-wrap input{width:54px;border:none;padding:5px;font-size:14px;font-weight:700;text-align:center;outline:none;background:white;}
+.fg-bs-arrows{display:flex;flex-direction:column;background:#d0d0d0;border-left:1px solid #aaa;}
+.fg-bs-arrows button{border:none;background:none;cursor:pointer;font-size:9px;padding:2px 5px;line-height:1;}
+.fg-bs-stake{width:64px;border:none;padding:5px;font-size:14px;font-weight:700;text-align:center;outline:none;background:white;}
+.fg-bs-profit{min-width:32px;text-align:right;font-size:14px;font-weight:700;}
+.fg-bs-btns{display:flex;flex-wrap:wrap;gap:3px;padding:5px 8px;}
+.fg-bs-btn{background:#ccc;padding:4px 6px;font-size:13px;font-weight:700;cursor:pointer;flex:1;min-width:50px;border:none;}
+.fg-bs-btn:hover{background:#bbb;}
+.fg-bs-actions{display:flex;align-items:center;gap:4px;padding:5px 8px 8px;}
+.fg-btn-clear{background:none;border:none;color:rgb(0,99,219);cursor:pointer;font-size:14px;padding:5px 6px;text-decoration:underline;}
+.fg-btn-edit{background:rgb(45,131,153);color:#fff;border:none;padding:10px;cursor:pointer;font-size:16px;flex:1;}
+.fg-btn-reset{background:rgb(196,63,78);color:#fff;border:none;padding:10px;cursor:pointer;font-size:16px;flex:1;}
+.fg-btn-submit{background:rgb(104,147,120);color:#fff;border:none;padding:10px;cursor:pointer;font-size:16px;flex:1;}
+
+/* ── RULES MODAL ── */
+.fg-modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.65);z-index:9999;display:flex;align-items:center;justify-content:center;}
+.fg-modal-box{background:#fff;width:100%;max-width:820px;max-height:96vh;overflow:hidden;display:flex;flex-direction:column;}
+.fg-modal-hdr{background:#0088cc;color:#fff;padding:14px 20px;display:flex;justify-content:space-between;align-items:center;font-size:20px;font-weight:700;flex-shrink:0;}
+.fg-modal-hdr button{background:none;border:none;color:#fff;font-size:24px;cursor:pointer;line-height:1;padding:0;}
+.fg-modal-body{overflow-y:auto;flex:1;}
+
+/* ══════════════════════════════
+   MOBILE BET POPUP
+   — top se slide, full width
+   — tablet + mobile dono pe same
+══════════════════════════════ */
+.fg-mob-overlay{
+  position:fixed;top:0;left:0;width:100%;height:100%;
+  z-index:9998;background:rgba(0,0,0,0.5);
+}
+.fg-mob-betbox{
+  position:absolute;top:0;left:0;right:0;
+  width:100%;max-width:100%;
+  border-radius:0 0 10px 10px;
+  overflow:hidden;
+  box-shadow:0 4px 24px rgba(0,0,0,0.35);
+}
+.fg-mob-back{background:#d6eaf8;}
+.fg-mob-lay{background:rgb(250,169,186);}
+
+.fg-mob-hdr{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:12px 16px;font-size:16px;font-weight:700;
+}
+.fg-mob-back .fg-mob-hdr{background:rgb(114,187,239);}
+.fg-mob-lay  .fg-mob-hdr{background:rgb(250,169,186);}
+
+.fg-mob-sel{font-size:15px;font-weight:700;flex:1;line-height:1.3;}
+.fg-mob-profit{font-size:14px;color:#333;margin:0 12px;white-space:nowrap;}
+.fg-mob-close{
+  background:rgba(0,0,0,0.15);border:none;
+  font-size:20px;cursor:pointer;color:#333;
+  line-height:1;padding:4px 8px;border-radius:4px;
+}
+
+.fg-mob-fields{display:flex;gap:12px;padding:10px 16px;}
+.fg-mob-field{flex:1;display:flex;flex-direction:column;gap:5px;}
+.fg-mob-field label{font-size:12px;color:#555;font-weight:700;text-transform:uppercase;}
+.fg-mob-field input{
+  border:1px solid #aaa;padding:10px 8px;
+  font-size:16px;font-weight:700;outline:none;
+  border-radius:4px;width:100%;box-sizing:border-box;background:white;
+}
+
+.fg-mob-odds-wrap{display:flex;align-items:center;border:1px solid #aaa;border-radius:4px;overflow:hidden;}
+.fg-mob-odds-wrap button{
+  background:#d0d0d0;border:none;
+  padding:10px 14px;font-size:20px;font-weight:700;
+  cursor:pointer;line-height:1;
+}
+.fg-mob-odds-wrap input{
+  flex:1;border:none;padding:10px 4px;
+  font-size:16px;font-weight:700;text-align:center;
+  outline:none;background:transparent;min-width:0;
+}
+
+.fg-mob-chips{display:flex;flex-wrap:wrap;gap:5px;padding:8px 16px 10px;}
+.fg-mob-chips button{
+  flex:1;min-width:55px;
+  background:#2a3a4a;color:#fff;border:none;
+  padding:9px 4px;font-size:13px;font-weight:700;
+  border-radius:4px;cursor:pointer;
+}
+.fg-mob-chips button:hover{background:#3a4a5a;}
+
+.fg-mob-actions{display:flex;gap:8px;padding:8px 16px 16px;align-items:center;}
+.fg-mob-clear{
+  background:none;border:none;color:rgb(0,99,219);
+  cursor:pointer;font-size:14px;padding:10px 8px;
+  text-decoration:underline;white-space:nowrap;
+}
+.fg-mob-edit{flex:1;background:rgb(45,131,153);color:#fff;border:none;padding:11px;font-size:15px;font-weight:700;border-radius:4px;cursor:pointer;}
+.fg-mob-reset{flex:1;background:rgb(196,63,78);color:#fff;border:none;padding:11px;font-size:15px;font-weight:700;border-radius:4px;cursor:pointer;}
+.fg-mob-submit{flex:1.5;background:rgb(104,147,120);color:#fff;border:none;padding:11px;font-size:15px;font-weight:700;border-radius:4px;cursor:pointer;}
+
+/* ══════════════════════════════
+   TABLET — 701px to 1200px
+══════════════════════════════ */
+@media (min-width:701px) and (max-width:1200px) {
+  .fg-main-layout{flex-direction:column;gap:4px;}
+  .fg-right-panel{display:none !important;}
+  .fg-center-col{width:100%;}
+  .fg-stream-frame{aspect-ratio:16/9;}
+
+  /* markets 2 col on tablet */
+  .fg-markets-grid{grid-template-columns:1fr 1fr;gap:4px;}
+  .fg-combo-full{grid-column:span 2;}
+  .fg-combo-grid{grid-template-columns:1fr 1fr;}
+
+  .fg-table th{font-size:14px;}
+  .fg-runner{font-size:13px;}
+  .fg-rate{font-size:15px;}
+  .fg-vol{font-size:11px;}
+
+  /* popup tablet pe thoda wide centered */
+  .fg-mob-betbox{
+    max-width:540px;
+    left:50%;
+    right:auto;
+    transform:translateX(-50%);
+    border-radius:0 0 12px 12px;
+  }
+  .fg-mob-chips button{font-size:14px;padding:10px 6px;min-width:62px;}
+  .fg-mob-hdr{padding:14px 18px;font-size:17px;}
+  .fg-mob-fields{padding:12px 18px;}
+  .fg-mob-field input{font-size:17px;padding:11px 10px;}
+  .fg-mob-odds-wrap button{padding:11px 16px;font-size:22px;}
+  .fg-mob-odds-wrap input{font-size:17px;}
+  .fg-mob-actions{padding:10px 18px 18px;}
+  .fg-mob-edit,.fg-mob-reset,.fg-mob-submit{padding:12px;font-size:16px;}
+
+  .fg-modal-box{width:100%;max-width:100%;max-height:100vh;border-radius:0;}
+}
+
+/* ══════════════════════════════
+   MOBILE — max 700px
+══════════════════════════════ */
+@media (max-width:700px) {
+  .fg-main-layout{flex-direction:column;gap:4px;}
+  .fg-right-panel{display:none !important;}
+  .fg-center-col{width:100%;}
+
+  .fg-markets-grid{grid-template-columns:1fr;}
+  .fg-combo-full{grid-column:span 1;}
+  .fg-combo-grid{grid-template-columns:1fr;}
+
+  .fg-market-card{overflow-x:auto;}
+  .fg-table{min-width:290px;}
+  .fg-runner{font-size:12px;white-space:normal;word-break:break-word;}
+  .fg-odds-btn{height:30px;}
+  .fg-rate{font-size:13px;}
+  .fg-vol{font-size:10px;}
+  .fg-odds-td{width:60px;}
+  .fg-th-back,.fg-th-lay{width:60px;}
+  .fg-limit-td{font-size:9px;padding-right:4px;}
+  .fg-th-limit{width:55px;font-size:8px !important;}
+  .fg-market-hdr{font-size:12px;padding:5px 6px;}
+  .fg-table th{font-size:12px;padding:5px 4px;}
+
+  .fg-stream-frame{aspect-ratio:16/9;}
+  .fg-flip-box{width:28px;height:40px;font-size:24px;}
+  .fg-game-title{font-size:13px;}
+  .fg-round-id{font-size:10px;}
+  .fg-result-circles{justify-content:flex-start;}
+  .fg-modal-box{width:100%;max-width:100%;max-height:100vh;border-radius:0;}
+
+  /* popup full width mobile */
+  .fg-mob-betbox{max-width:100%;left:0;right:0;transform:none;}
+  .fg-mob-chips button{font-size:11px;padding:7px 2px;min-width:46px;}
+  .fg-mob-actions{flex-wrap:wrap;}
+  .fg-mob-edit,.fg-mob-reset,.fg-mob-submit{font-size:13px;padding:9px;}
+}
